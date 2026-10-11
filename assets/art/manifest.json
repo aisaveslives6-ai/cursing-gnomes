@@ -1,0 +1,3698 @@
+{
+ "gnome_worker_m0": {
+  "file": "assets/art/units/gnome_worker_m0.png",
+  "w": 146,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "gnome_worker_m1": {
+  "file": "assets/art/units/gnome_worker_m1.png",
+  "w": 160,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "gnome_worker_f0": {
+  "file": "assets/art/units/gnome_worker_f0.png",
+  "w": 153,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "gnome_worker_f1": {
+  "file": "assets/art/units/gnome_worker_f1.png",
+  "w": 157,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "gnome_warrior_m0": {
+  "file": "assets/art/units/gnome_warrior_m0.png",
+  "w": 141,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "gnome_warrior_m1": {
+  "file": "assets/art/units/gnome_warrior_m1.png",
+  "w": 152,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "gnome_warrior_f0": {
+  "file": "assets/art/units/gnome_warrior_f0.png",
+  "w": 148,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "gnome_warrior_f1": {
+  "file": "assets/art/units/gnome_warrior_f1.png",
+  "w": 144,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "gnome_ranger_m0": {
+  "file": "assets/art/units/gnome_ranger_m0.png",
+  "w": 134,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "gnome_ranger_m1": {
+  "file": "assets/art/units/gnome_ranger_m1.png",
+  "w": 129,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "gnome_ranger_f0": {
+  "file": "assets/art/units/gnome_ranger_f0.png",
+  "w": 134,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "gnome_ranger_f1": {
+  "file": "assets/art/units/gnome_ranger_f1.png",
+  "w": 129,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "gnome_mage_m0": {
+  "file": "assets/art/units/gnome_mage_m0.png",
+  "w": 163,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "gnome_mage_m1": {
+  "file": "assets/art/units/gnome_mage_m1.png",
+  "w": 159,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "gnome_mage_f0": {
+  "file": "assets/art/units/gnome_mage_f0.png",
+  "w": 172,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "gnome_mage_f1": {
+  "file": "assets/art/units/gnome_mage_f1.png",
+  "w": 171,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "human_worker_m0": {
+  "file": "assets/art/units/human_worker_m0.png",
+  "w": 171,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "human_worker_m1": {
+  "file": "assets/art/units/human_worker_m1.png",
+  "w": 158,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "human_worker_f0": {
+  "file": "assets/art/units/human_worker_f0.png",
+  "w": 171,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "human_worker_f1": {
+  "file": "assets/art/units/human_worker_f1.png",
+  "w": 152,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "human_warrior_m0": {
+  "file": "assets/art/units/human_warrior_m0.png",
+  "w": 147,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "human_warrior_m1": {
+  "file": "assets/art/units/human_warrior_m1.png",
+  "w": 145,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "human_warrior_f0": {
+  "file": "assets/art/units/human_warrior_f0.png",
+  "w": 189,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "human_warrior_f1": {
+  "file": "assets/art/units/human_warrior_f1.png",
+  "w": 170,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "human_ranger_m0": {
+  "file": "assets/art/units/human_ranger_m0.png",
+  "w": 152,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "human_ranger_m1": {
+  "file": "assets/art/units/human_ranger_m1.png",
+  "w": 136,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "human_ranger_f0": {
+  "file": "assets/art/units/human_ranger_f0.png",
+  "w": 140,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "human_ranger_f1": {
+  "file": "assets/art/units/human_ranger_f1.png",
+  "w": 142,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "human_mage_m0": {
+  "file": "assets/art/units/human_mage_m0.png",
+  "w": 164,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "human_mage_m1": {
+  "file": "assets/art/units/human_mage_m1.png",
+  "w": 146,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "human_mage_f0": {
+  "file": "assets/art/units/human_mage_f0.png",
+  "w": 164,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "human_mage_f1": {
+  "file": "assets/art/units/human_mage_f1.png",
+  "w": 154,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "elf_worker_m0": {
+  "file": "assets/art/units/elf_worker_m0.png",
+  "w": 169,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "elf_worker_m1": {
+  "file": "assets/art/units/elf_worker_m1.png",
+  "w": 177,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "elf_worker_f0": {
+  "file": "assets/art/units/elf_worker_f0.png",
+  "w": 167,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "elf_worker_f1": {
+  "file": "assets/art/units/elf_worker_f1.png",
+  "w": 168,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "elf_warrior_m0": {
+  "file": "assets/art/units/elf_warrior_m0.png",
+  "w": 163,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "elf_warrior_m1": {
+  "file": "assets/art/units/elf_warrior_m1.png",
+  "w": 166,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "elf_warrior_f0": {
+  "file": "assets/art/units/elf_warrior_f0.png",
+  "w": 164,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "elf_warrior_f1": {
+  "file": "assets/art/units/elf_warrior_f1.png",
+  "w": 165,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "elf_ranger_m0": {
+  "file": "assets/art/units/elf_ranger_m0.png",
+  "w": 163,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "elf_ranger_m1": {
+  "file": "assets/art/units/elf_ranger_m1.png",
+  "w": 167,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "elf_ranger_f0": {
+  "file": "assets/art/units/elf_ranger_f0.png",
+  "w": 164,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "elf_ranger_f1": {
+  "file": "assets/art/units/elf_ranger_f1.png",
+  "w": 171,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "elf_mage_m0": {
+  "file": "assets/art/units/elf_mage_m0.png",
+  "w": 170,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "elf_mage_m1": {
+  "file": "assets/art/units/elf_mage_m1.png",
+  "w": 177,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "elf_mage_f0": {
+  "file": "assets/art/units/elf_mage_f0.png",
+  "w": 185,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "elf_mage_f1": {
+  "file": "assets/art/units/elf_mage_f1.png",
+  "w": 184,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "ogre_worker_m0": {
+  "file": "assets/art/units/ogre_worker_m0.png",
+  "w": 153,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "ogre_worker_m1": {
+  "file": "assets/art/units/ogre_worker_m1.png",
+  "w": 151,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "ogre_worker_f0": {
+  "file": "assets/art/units/ogre_worker_f0.png",
+  "w": 149,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "ogre_worker_f1": {
+  "file": "assets/art/units/ogre_worker_f1.png",
+  "w": 165,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "ogre_warrior_m0": {
+  "file": "assets/art/units/ogre_warrior_m0.png",
+  "w": 186,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "ogre_warrior_m1": {
+  "file": "assets/art/units/ogre_warrior_m1.png",
+  "w": 179,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "ogre_warrior_f0": {
+  "file": "assets/art/units/ogre_warrior_f0.png",
+  "w": 173,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "ogre_warrior_f1": {
+  "file": "assets/art/units/ogre_warrior_f1.png",
+  "w": 159,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "ogre_ranger_m0": {
+  "file": "assets/art/units/ogre_ranger_m0.png",
+  "w": 157,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "ogre_ranger_m1": {
+  "file": "assets/art/units/ogre_ranger_m1.png",
+  "w": 185,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "ogre_ranger_f0": {
+  "file": "assets/art/units/ogre_ranger_f0.png",
+  "w": 156,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "ogre_ranger_f1": {
+  "file": "assets/art/units/ogre_ranger_f1.png",
+  "w": 191,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "ogre_mage_m0": {
+  "file": "assets/art/units/ogre_mage_m0.png",
+  "w": 181,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "ogre_mage_m1": {
+  "file": "assets/art/units/ogre_mage_m1.png",
+  "w": 192,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "ogre_mage_f0": {
+  "file": "assets/art/units/ogre_mage_f0.png",
+  "w": 171,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "ogre_mage_f1": {
+  "file": "assets/art/units/ogre_mage_f1.png",
+  "w": 171,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "gnome_kid0": {
+  "file": "assets/art/units/gnome_kid0.png",
+  "w": 155,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "gnome_kid1": {
+  "file": "assets/art/units/gnome_kid1.png",
+  "w": 164,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "gnome_kid2": {
+  "file": "assets/art/units/gnome_kid2.png",
+  "w": 157,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "gnome_kid3": {
+  "file": "assets/art/units/gnome_kid3.png",
+  "w": 171,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "human_kid0": {
+  "file": "assets/art/units/human_kid0.png",
+  "w": 186,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "human_kid1": {
+  "file": "assets/art/units/human_kid1.png",
+  "w": 160,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "human_kid2": {
+  "file": "assets/art/units/human_kid2.png",
+  "w": 193,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "human_kid3": {
+  "file": "assets/art/units/human_kid3.png",
+  "w": 160,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "elf_kid0": {
+  "file": "assets/art/units/elf_kid0.png",
+  "w": 117,
+  "h": 163,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "elf_kid1": {
+  "file": "assets/art/units/elf_kid1.png",
+  "w": 135,
+  "h": 161,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "elf_kid2": {
+  "file": "assets/art/units/elf_kid2.png",
+  "w": 126,
+  "h": 162,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "elf_kid3": {
+  "file": "assets/art/units/elf_kid3.png",
+  "w": 118,
+  "h": 162,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "ogre_kid0": {
+  "file": "assets/art/units/ogre_kid0.png",
+  "w": 179,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "ogre_kid1": {
+  "file": "assets/art/units/ogre_kid1.png",
+  "w": 179,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "ogre_kid2": {
+  "file": "assets/art/units/ogre_kid2.png",
+  "w": 176,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "ogre_kid3": {
+  "file": "assets/art/units/ogre_kid3.png",
+  "w": 135,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "gnome_named0": {
+  "file": "assets/art/units/gnome_named0.png",
+  "w": 173,
+  "h": 180,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "gnome_named1": {
+  "file": "assets/art/units/gnome_named1.png",
+  "w": 146,
+  "h": 164,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "gnome_named2": {
+  "file": "assets/art/units/gnome_named2.png",
+  "w": 190,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "gnome_named3": {
+  "file": "assets/art/units/gnome_named3.png",
+  "w": 191,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "human_named0": {
+  "file": "assets/art/units/human_named0.png",
+  "w": 192,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "human_named1": {
+  "file": "assets/art/units/human_named1.png",
+  "w": 192,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "human_named2": {
+  "file": "assets/art/units/human_named2.png",
+  "w": 191,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "human_named3": {
+  "file": "assets/art/units/human_named3.png",
+  "w": 193,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "elf_named0": {
+  "file": "assets/art/units/elf_named0.png",
+  "w": 191,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "elf_named1": {
+  "file": "assets/art/units/elf_named1.png",
+  "w": 191,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "elf_named2": {
+  "file": "assets/art/units/elf_named2.png",
+  "w": 193,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "elf_named3": {
+  "file": "assets/art/units/elf_named3.png",
+  "w": 193,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "ogre_named0": {
+  "file": "assets/art/units/ogre_named0.png",
+  "w": 190,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "ogre_named1": {
+  "file": "assets/art/units/ogre_named1.png",
+  "w": 191,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "ogre_named2": {
+  "file": "assets/art/units/ogre_named2.png",
+  "w": 193,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "ogre_named3": {
+  "file": "assets/art/units/ogre_named3.png",
+  "w": 193,
+  "h": 192,
+  "kind": "png",
+  "category": "units",
+  "source": "SPRITES54"
+ },
+ "mayor_explorer": {
+  "file": "assets/art/tools/mayor_explorer.png",
+  "w": 138,
+  "h": 220,
+  "kind": "png",
+  "category": "tools",
+  "source": "SPRITES54"
+ },
+ "carry_wood": {
+  "file": "assets/art/tools/carry_wood.png",
+  "w": 96,
+  "h": 96,
+  "kind": "png",
+  "category": "tools",
+  "source": "SPRITES54"
+ },
+ "carry_gold": {
+  "file": "assets/art/tools/carry_gold.png",
+  "w": 95,
+  "h": 96,
+  "kind": "png",
+  "category": "tools",
+  "source": "SPRITES54"
+ },
+ "carry_food": {
+  "file": "assets/art/tools/carry_food.png",
+  "w": 95,
+  "h": 96,
+  "kind": "png",
+  "category": "tools",
+  "source": "SPRITES54"
+ },
+ "carry_seeds": {
+  "file": "assets/art/tools/carry_seeds.png",
+  "w": 95,
+  "h": 96,
+  "kind": "png",
+  "category": "tools",
+  "source": "SPRITES54"
+ },
+ "carry_oil": {
+  "file": "assets/art/tools/carry_oil.png",
+  "w": 94,
+  "h": 96,
+  "kind": "png",
+  "category": "tools",
+  "source": "SPRITES54"
+ },
+ "icon_gold": {
+  "file": "assets/art/icons/icon_gold.png",
+  "w": 63,
+  "h": 64,
+  "kind": "png",
+  "category": "icons",
+  "source": "SPRITES54"
+ },
+ "icon_wood": {
+  "file": "assets/art/icons/icon_wood.png",
+  "w": 83,
+  "h": 64,
+  "kind": "png",
+  "category": "icons",
+  "source": "SPRITES54"
+ },
+ "icon_food": {
+  "file": "assets/art/icons/icon_food.png",
+  "w": 63,
+  "h": 64,
+  "kind": "png",
+  "category": "icons",
+  "source": "SPRITES54"
+ },
+ "icon_seeds": {
+  "file": "assets/art/icons/icon_seeds.png",
+  "w": 63,
+  "h": 64,
+  "kind": "png",
+  "category": "icons",
+  "source": "SPRITES54"
+ },
+ "icon_oil": {
+  "file": "assets/art/icons/icon_oil.png",
+  "w": 76,
+  "h": 64,
+  "kind": "png",
+  "category": "icons",
+  "source": "SPRITES54"
+ },
+ "icon_ammo": {
+  "file": "assets/art/icons/icon_ammo.png",
+  "w": 62,
+  "h": 64,
+  "kind": "png",
+  "category": "icons",
+  "source": "SPRITES54"
+ },
+ "icon_meds": {
+  "file": "assets/art/icons/icon_meds.png",
+  "w": 61,
+  "h": 64,
+  "kind": "png",
+  "category": "icons",
+  "source": "SPRITES54"
+ },
+ "tool_axe": {
+  "file": "assets/art/tools/tool_axe.png",
+  "w": 63,
+  "h": 64,
+  "kind": "png",
+  "category": "tools",
+  "source": "SPRITES54"
+ },
+ "tool_pickaxe": {
+  "file": "assets/art/tools/tool_pickaxe.png",
+  "w": 63,
+  "h": 64,
+  "kind": "png",
+  "category": "tools",
+  "source": "SPRITES54"
+ },
+ "tool_hoe": {
+  "file": "assets/art/tools/tool_hoe.png",
+  "w": 63,
+  "h": 64,
+  "kind": "png",
+  "category": "tools",
+  "source": "SPRITES54"
+ },
+ "tool_hammer": {
+  "file": "assets/art/tools/tool_hammer.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "tools",
+  "source": "SPRITES54"
+ },
+ "tool_fishingrod": {
+  "file": "assets/art/tools/tool_fishingrod.png",
+  "w": 63,
+  "h": 64,
+  "kind": "png",
+  "category": "tools",
+  "source": "SPRITES54"
+ },
+ "c55_recovered_sprite": {
+  "file": "assets/art/tools/c55_recovered_sprite.png",
+  "w": 131,
+  "h": 192,
+  "kind": "png",
+  "category": "tools",
+  "source": "SPRITES54"
+ },
+ "fur_1": {
+  "file": "assets/art/animals/fur_1.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_2": {
+  "file": "assets/art/animals/fur_2.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_3": {
+  "file": "assets/art/animals/fur_3.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_4": {
+  "file": "assets/art/animals/fur_4.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_5": {
+  "file": "assets/art/animals/fur_5.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_6": {
+  "file": "assets/art/animals/fur_6.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_7": {
+  "file": "assets/art/animals/fur_7.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_8": {
+  "file": "assets/art/animals/fur_8.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_9": {
+  "file": "assets/art/animals/fur_9.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_10": {
+  "file": "assets/art/animals/fur_10.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_11": {
+  "file": "assets/art/animals/fur_11.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_12": {
+  "file": "assets/art/animals/fur_12.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_13": {
+  "file": "assets/art/animals/fur_13.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_14": {
+  "file": "assets/art/animals/fur_14.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_15": {
+  "file": "assets/art/animals/fur_15.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_16": {
+  "file": "assets/art/animals/fur_16.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_17": {
+  "file": "assets/art/animals/fur_17.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_18": {
+  "file": "assets/art/animals/fur_18.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_19": {
+  "file": "assets/art/animals/fur_19.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_20": {
+  "file": "assets/art/animals/fur_20.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_21": {
+  "file": "assets/art/animals/fur_21.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_22": {
+  "file": "assets/art/animals/fur_22.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_23": {
+  "file": "assets/art/animals/fur_23.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_24": {
+  "file": "assets/art/animals/fur_24.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_25": {
+  "file": "assets/art/animals/fur_25.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_26": {
+  "file": "assets/art/animals/fur_26.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_27": {
+  "file": "assets/art/animals/fur_27.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_28": {
+  "file": "assets/art/animals/fur_28.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_29": {
+  "file": "assets/art/animals/fur_29.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_30": {
+  "file": "assets/art/animals/fur_30.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_31": {
+  "file": "assets/art/animals/fur_31.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_32": {
+  "file": "assets/art/animals/fur_32.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_33": {
+  "file": "assets/art/animals/fur_33.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_34": {
+  "file": "assets/art/animals/fur_34.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_35": {
+  "file": "assets/art/animals/fur_35.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_36": {
+  "file": "assets/art/animals/fur_36.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_37": {
+  "file": "assets/art/animals/fur_37.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_38": {
+  "file": "assets/art/animals/fur_38.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_39": {
+  "file": "assets/art/animals/fur_39.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_40": {
+  "file": "assets/art/animals/fur_40.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_41": {
+  "file": "assets/art/animals/fur_41.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_42": {
+  "file": "assets/art/animals/fur_42.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_43": {
+  "file": "assets/art/animals/fur_43.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_44": {
+  "file": "assets/art/animals/fur_44.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_45": {
+  "file": "assets/art/animals/fur_45.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_46": {
+  "file": "assets/art/animals/fur_46.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_47": {
+  "file": "assets/art/animals/fur_47.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_48": {
+  "file": "assets/art/animals/fur_48.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_49": {
+  "file": "assets/art/animals/fur_49.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_50": {
+  "file": "assets/art/animals/fur_50.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_51": {
+  "file": "assets/art/animals/fur_51.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_52": {
+  "file": "assets/art/animals/fur_52.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_53": {
+  "file": "assets/art/animals/fur_53.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_54": {
+  "file": "assets/art/animals/fur_54.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_55": {
+  "file": "assets/art/animals/fur_55.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_56": {
+  "file": "assets/art/animals/fur_56.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_57": {
+  "file": "assets/art/animals/fur_57.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_58": {
+  "file": "assets/art/animals/fur_58.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_59": {
+  "file": "assets/art/animals/fur_59.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_60": {
+  "file": "assets/art/animals/fur_60.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_61": {
+  "file": "assets/art/animals/fur_61.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_62": {
+  "file": "assets/art/animals/fur_62.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_63": {
+  "file": "assets/art/animals/fur_63.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_64": {
+  "file": "assets/art/animals/fur_64.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_65": {
+  "file": "assets/art/animals/fur_65.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_66": {
+  "file": "assets/art/animals/fur_66.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_67": {
+  "file": "assets/art/animals/fur_67.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_68": {
+  "file": "assets/art/animals/fur_68.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_69": {
+  "file": "assets/art/animals/fur_69.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_70": {
+  "file": "assets/art/animals/fur_70.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_71": {
+  "file": "assets/art/animals/fur_71.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_72": {
+  "file": "assets/art/animals/fur_72.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_73": {
+  "file": "assets/art/animals/fur_73.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_74": {
+  "file": "assets/art/animals/fur_74.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_75": {
+  "file": "assets/art/animals/fur_75.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_76": {
+  "file": "assets/art/animals/fur_76.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_77": {
+  "file": "assets/art/animals/fur_77.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_78": {
+  "file": "assets/art/animals/fur_78.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_79": {
+  "file": "assets/art/animals/fur_79.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_80": {
+  "file": "assets/art/animals/fur_80.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_81": {
+  "file": "assets/art/animals/fur_81.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_82": {
+  "file": "assets/art/animals/fur_82.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_83": {
+  "file": "assets/art/animals/fur_83.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_84": {
+  "file": "assets/art/animals/fur_84.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_85": {
+  "file": "assets/art/animals/fur_85.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_86": {
+  "file": "assets/art/animals/fur_86.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_87": {
+  "file": "assets/art/animals/fur_87.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_88": {
+  "file": "assets/art/animals/fur_88.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_89": {
+  "file": "assets/art/animals/fur_89.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_90": {
+  "file": "assets/art/animals/fur_90.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_91": {
+  "file": "assets/art/animals/fur_91.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_92": {
+  "file": "assets/art/animals/fur_92.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_93": {
+  "file": "assets/art/animals/fur_93.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_94": {
+  "file": "assets/art/animals/fur_94.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_95": {
+  "file": "assets/art/animals/fur_95.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_96": {
+  "file": "assets/art/animals/fur_96.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_97": {
+  "file": "assets/art/animals/fur_97.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_98": {
+  "file": "assets/art/animals/fur_98.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_99": {
+  "file": "assets/art/animals/fur_99.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_100": {
+  "file": "assets/art/animals/fur_100.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_101": {
+  "file": "assets/art/animals/fur_101.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_102": {
+  "file": "assets/art/animals/fur_102.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_103": {
+  "file": "assets/art/animals/fur_103.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_104": {
+  "file": "assets/art/animals/fur_104.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_105": {
+  "file": "assets/art/animals/fur_105.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_106": {
+  "file": "assets/art/animals/fur_106.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_107": {
+  "file": "assets/art/animals/fur_107.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_108": {
+  "file": "assets/art/animals/fur_108.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_109": {
+  "file": "assets/art/animals/fur_109.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fur_110": {
+  "file": "assets/art/animals/fur_110.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "toilet_human": {
+  "file": "assets/art/animals/toilet_human.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "preg_human": {
+  "file": "assets/art/animals/preg_human.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "toilet_ogre": {
+  "file": "assets/art/animals/toilet_ogre.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "preg_ogre": {
+  "file": "assets/art/animals/preg_ogre.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "toilet_elf": {
+  "file": "assets/art/animals/toilet_elf.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "preg_elf": {
+  "file": "assets/art/animals/preg_elf.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "toilet_gnome": {
+  "file": "assets/art/animals/toilet_gnome.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "preg_gnome": {
+  "file": "assets/art/animals/preg_gnome.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "baby": {
+  "file": "assets/art/animals/baby.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "baby_sleep": {
+  "file": "assets/art/animals/baby_sleep.png",
+  "w": 48,
+  "h": 48,
+  "kind": "png",
+  "category": "animals",
+  "source": "C58C_SPRITES"
+ },
+ "fire_lg_0": {
+  "file": "assets/art/fx/fire_lg_0.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_lg_1": {
+  "file": "assets/art/fx/fire_lg_1.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_lg_2": {
+  "file": "assets/art/fx/fire_lg_2.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_lg_3": {
+  "file": "assets/art/fx/fire_lg_3.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_lg_4": {
+  "file": "assets/art/fx/fire_lg_4.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_lg_5": {
+  "file": "assets/art/fx/fire_lg_5.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_lg_6": {
+  "file": "assets/art/fx/fire_lg_6.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_lg_7": {
+  "file": "assets/art/fx/fire_lg_7.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_lg_8": {
+  "file": "assets/art/fx/fire_lg_8.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_lg_9": {
+  "file": "assets/art/fx/fire_lg_9.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_rg_0": {
+  "file": "assets/art/fx/fire_rg_0.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_rg_1": {
+  "file": "assets/art/fx/fire_rg_1.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_rg_2": {
+  "file": "assets/art/fx/fire_rg_2.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_rg_3": {
+  "file": "assets/art/fx/fire_rg_3.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_rg_4": {
+  "file": "assets/art/fx/fire_rg_4.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_rg_5": {
+  "file": "assets/art/fx/fire_rg_5.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_rg_6": {
+  "file": "assets/art/fx/fire_rg_6.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_rg_7": {
+  "file": "assets/art/fx/fire_rg_7.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_rg_8": {
+  "file": "assets/art/fx/fire_rg_8.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_rg_9": {
+  "file": "assets/art/fx/fire_rg_9.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_sm_0": {
+  "file": "assets/art/fx/fire_sm_0.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_sm_1": {
+  "file": "assets/art/fx/fire_sm_1.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_sm_2": {
+  "file": "assets/art/fx/fire_sm_2.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_sm_3": {
+  "file": "assets/art/fx/fire_sm_3.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_sm_4": {
+  "file": "assets/art/fx/fire_sm_4.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_sm_5": {
+  "file": "assets/art/fx/fire_sm_5.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_sm_6": {
+  "file": "assets/art/fx/fire_sm_6.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_sm_7": {
+  "file": "assets/art/fx/fire_sm_7.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_sm_8": {
+  "file": "assets/art/fx/fire_sm_8.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "fire_sm_9": {
+  "file": "assets/art/fx/fire_sm_9.png",
+  "w": 64,
+  "h": 64,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "smoke_0": {
+  "file": "assets/art/fx/smoke_0.png",
+  "w": 96,
+  "h": 96,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "smoke_1": {
+  "file": "assets/art/fx/smoke_1.png",
+  "w": 96,
+  "h": 96,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "smoke_2": {
+  "file": "assets/art/fx/smoke_2.png",
+  "w": 96,
+  "h": 96,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "smoke_3": {
+  "file": "assets/art/fx/smoke_3.png",
+  "w": 96,
+  "h": 96,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "smoke_4": {
+  "file": "assets/art/fx/smoke_4.png",
+  "w": 96,
+  "h": 96,
+  "kind": "png",
+  "category": "fx",
+  "source": "C59_SPRITES"
+ },
+ "btn": {
+  "file": "assets/art/ui/btn.png",
+  "w": 220,
+  "h": 106,
+  "kind": "png",
+  "category": "ui",
+  "source": "LIVE62_ART"
+ },
+ "clock": {
+  "file": "assets/art/ui/clock.png",
+  "w": 380,
+  "h": 117,
+  "kind": "png",
+  "category": "ui",
+  "source": "LIVE62_ART"
+ },
+ "frame": {
+  "file": "assets/art/ui/frame.png",
+  "w": 160,
+  "h": 160,
+  "kind": "png",
+  "category": "ui",
+  "source": "LIVE62_ART"
+ },
+ "panel": {
+  "file": "assets/art/ui/panel.png",
+  "w": 1398,
+  "h": 200,
+  "kind": "png",
+  "category": "ui",
+  "source": "LIVE62_ART"
+ },
+ "slot": {
+  "file": "assets/art/ui/slot.png",
+  "w": 118,
+  "h": 120,
+  "kind": "png",
+  "category": "ui",
+  "source": "LIVE62_ART"
+ },
+ "tab": {
+  "file": "assets/art/ui/tab.png",
+  "w": 185,
+  "h": 100,
+  "kind": "png",
+  "category": "ui",
+  "source": "LIVE62_ART"
+ },
+ "urges": {
+  "file": "assets/art/ui/urges.png",
+  "w": 232,
+  "h": 450,
+  "kind": "png",
+  "category": "ui",
+  "source": "LIVE62_ART"
+ },
+ "furn_forge": {
+  "file": "assets/art/furniture/furn_forge.png",
+  "w": 288,
+  "h": 280,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_bath": {
+  "file": "assets/art/furniture/furn_bath.png",
+  "w": 141,
+  "h": 140,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_bed_elf": {
+  "file": "assets/art/furniture/furn_bed_elf.png",
+  "w": 220,
+  "h": 182,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_bed_gnome": {
+  "file": "assets/art/furniture/furn_bed_gnome.png",
+  "w": 220,
+  "h": 177,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_bed_human": {
+  "file": "assets/art/furniture/furn_bed_human.png",
+  "w": 214,
+  "h": 220,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_bed_ogre": {
+  "file": "assets/art/furniture/furn_bed_ogre.png",
+  "w": 220,
+  "h": 150,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_bunk_elf": {
+  "file": "assets/art/furniture/furn_bunk_elf.png",
+  "w": 160,
+  "h": 158,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_bunk_gnome": {
+  "file": "assets/art/furniture/furn_bunk_gnome.png",
+  "w": 160,
+  "h": 127,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_bunk_human": {
+  "file": "assets/art/furniture/furn_bunk_human.png",
+  "w": 160,
+  "h": 108,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_bunk_ogre": {
+  "file": "assets/art/furniture/furn_bunk_ogre.png",
+  "w": 160,
+  "h": 140,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_chair_elf": {
+  "file": "assets/art/furniture/furn_chair_elf.png",
+  "w": 87,
+  "h": 140,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_chair_gnome": {
+  "file": "assets/art/furniture/furn_chair_gnome.png",
+  "w": 105,
+  "h": 140,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_chair_human": {
+  "file": "assets/art/furniture/furn_chair_human.png",
+  "w": 97,
+  "h": 140,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_chair_ogre": {
+  "file": "assets/art/furniture/furn_chair_ogre.png",
+  "w": 114,
+  "h": 140,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_counter_elf": {
+  "file": "assets/art/furniture/furn_counter_elf.png",
+  "w": 168,
+  "h": 140,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_counter_gnome": {
+  "file": "assets/art/furniture/furn_counter_gnome.png",
+  "w": 150,
+  "h": 140,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_counter_human": {
+  "file": "assets/art/furniture/furn_counter_human.png",
+  "w": 167,
+  "h": 140,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_counter_ogre": {
+  "file": "assets/art/furniture/furn_counter_ogre.png",
+  "w": 163,
+  "h": 140,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_crib_elf": {
+  "file": "assets/art/furniture/furn_crib_elf.png",
+  "w": 119,
+  "h": 120,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_crib_gnome": {
+  "file": "assets/art/furniture/furn_crib_gnome.png",
+  "w": 118,
+  "h": 120,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_crib_human": {
+  "file": "assets/art/furniture/furn_crib_human.png",
+  "w": 111,
+  "h": 120,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_crib_ogre": {
+  "file": "assets/art/furniture/furn_crib_ogre.png",
+  "w": 127,
+  "h": 120,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_divider_elf": {
+  "file": "assets/art/furniture/furn_divider_elf.png",
+  "w": 220,
+  "h": 161,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_divider_gnome": {
+  "file": "assets/art/furniture/furn_divider_gnome.png",
+  "w": 220,
+  "h": 157,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_divider_human": {
+  "file": "assets/art/furniture/furn_divider_human.png",
+  "w": 220,
+  "h": 150,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_divider_ogre": {
+  "file": "assets/art/furniture/furn_divider_ogre.png",
+  "w": 220,
+  "h": 164,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_fridge": {
+  "file": "assets/art/furniture/furn_fridge.png",
+  "w": 120,
+  "h": 160,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_jail_bars": {
+  "file": "assets/art/furniture/furn_jail_bars.png",
+  "w": 272,
+  "h": 200,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_jail_door": {
+  "file": "assets/art/furniture/furn_jail_door.png",
+  "w": 116,
+  "h": 240,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_lamp_elf": {
+  "file": "assets/art/furniture/furn_lamp_elf.png",
+  "w": 78,
+  "h": 140,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_lamp_gnome": {
+  "file": "assets/art/furniture/furn_lamp_gnome.png",
+  "w": 100,
+  "h": 136,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_lamp_human": {
+  "file": "assets/art/furniture/furn_lamp_human.png",
+  "w": 64,
+  "h": 140,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_lamp_ogre": {
+  "file": "assets/art/furniture/furn_lamp_ogre.png",
+  "w": 100,
+  "h": 100,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_plant": {
+  "file": "assets/art/furniture/furn_plant.png",
+  "w": 100,
+  "h": 115,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_rug": {
+  "file": "assets/art/furniture/furn_rug.png",
+  "w": 220,
+  "h": 140,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_shelf_elf": {
+  "file": "assets/art/furniture/furn_shelf_elf.png",
+  "w": 122,
+  "h": 200,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_shelf_gnome": {
+  "file": "assets/art/furniture/furn_shelf_gnome.png",
+  "w": 140,
+  "h": 189,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_shelf_human": {
+  "file": "assets/art/furniture/furn_shelf_human.png",
+  "w": 140,
+  "h": 172,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_shelf_ogre": {
+  "file": "assets/art/furniture/furn_shelf_ogre.png",
+  "w": 140,
+  "h": 134,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_shower": {
+  "file": "assets/art/furniture/furn_shower.png",
+  "w": 160,
+  "h": 171,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_sink": {
+  "file": "assets/art/furniture/furn_sink.png",
+  "w": 114,
+  "h": 140,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_sofa_elf": {
+  "file": "assets/art/furniture/furn_sofa_elf.png",
+  "w": 177,
+  "h": 140,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_sofa_gnome": {
+  "file": "assets/art/furniture/furn_sofa_gnome.png",
+  "w": 185,
+  "h": 140,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_sofa_human": {
+  "file": "assets/art/furniture/furn_sofa_human.png",
+  "w": 184,
+  "h": 140,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_sofa_ogre": {
+  "file": "assets/art/furniture/furn_sofa_ogre.png",
+  "w": 215,
+  "h": 140,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_stove_elf": {
+  "file": "assets/art/furniture/furn_stove_elf.png",
+  "w": 153,
+  "h": 180,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_stove_gnome": {
+  "file": "assets/art/furniture/furn_stove_gnome.png",
+  "w": 110,
+  "h": 180,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_stove_human": {
+  "file": "assets/art/furniture/furn_stove_human.png",
+  "w": 144,
+  "h": 180,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_stove_ogre": {
+  "file": "assets/art/furniture/furn_stove_ogre.png",
+  "w": 171,
+  "h": 180,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_table_elf": {
+  "file": "assets/art/furniture/furn_table_elf.png",
+  "w": 200,
+  "h": 144,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_table_gnome": {
+  "file": "assets/art/furniture/furn_table_gnome.png",
+  "w": 156,
+  "h": 160,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_table_human": {
+  "file": "assets/art/furniture/furn_table_human.png",
+  "w": 200,
+  "h": 134,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_table_ogre": {
+  "file": "assets/art/furniture/furn_table_ogre.png",
+  "w": 200,
+  "h": 131,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_toilet_elf": {
+  "file": "assets/art/furniture/furn_toilet_elf.png",
+  "w": 101,
+  "h": 160,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_toilet_gnome": {
+  "file": "assets/art/furniture/furn_toilet_gnome.png",
+  "w": 120,
+  "h": 147,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_toilet_human": {
+  "file": "assets/art/furniture/furn_toilet_human.png",
+  "w": 120,
+  "h": 118,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_toilet_ogre": {
+  "file": "assets/art/furniture/furn_toilet_ogre.png",
+  "w": 120,
+  "h": 135,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_wardrobe_elf": {
+  "file": "assets/art/furniture/furn_wardrobe_elf.png",
+  "w": 130,
+  "h": 200,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_wardrobe_gnome": {
+  "file": "assets/art/furniture/furn_wardrobe_gnome.png",
+  "w": 140,
+  "h": 169,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_wardrobe_human": {
+  "file": "assets/art/furniture/furn_wardrobe_human.png",
+  "w": 119,
+  "h": 200,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_wardrobe_ogre": {
+  "file": "assets/art/furniture/furn_wardrobe_ogre.png",
+  "w": 140,
+  "h": 200,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_bar": {
+  "file": "assets/art/furniture/furn_bar.png",
+  "w": 240,
+  "h": 84,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_board": {
+  "file": "assets/art/furniture/furn_board.png",
+  "w": 240,
+  "h": 233,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_bookshelf": {
+  "file": "assets/art/furniture/furn_bookshelf.png",
+  "w": 104,
+  "h": 240,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_chandelier": {
+  "file": "assets/art/furniture/furn_chandelier.png",
+  "w": 145,
+  "h": 240,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_desk": {
+  "file": "assets/art/furniture/furn_desk.png",
+  "w": 240,
+  "h": 220,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_lamp_table": {
+  "file": "assets/art/furniture/furn_lamp_table.png",
+  "w": 171,
+  "h": 240,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_painting": {
+  "file": "assets/art/furniture/furn_painting.png",
+  "w": 226,
+  "h": 240,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_plant_tall": {
+  "file": "assets/art/furniture/furn_plant_tall.png",
+  "w": 146,
+  "h": 240,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_rack": {
+  "file": "assets/art/furniture/furn_rack.png",
+  "w": 167,
+  "h": 240,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_rug_entry": {
+  "file": "assets/art/furniture/furn_rug_entry.png",
+  "w": 240,
+  "h": 169,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_rug_rect": {
+  "file": "assets/art/furniture/furn_rug_rect.png",
+  "w": 240,
+  "h": 152,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_rug_round": {
+  "file": "assets/art/furniture/furn_rug_round.png",
+  "w": 239,
+  "h": 240,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_stool": {
+  "file": "assets/art/furniture/furn_stool.png",
+  "w": 164,
+  "h": 240,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "furn_tub": {
+  "file": "assets/art/furniture/furn_tub.png",
+  "w": 240,
+  "h": 199,
+  "kind": "png",
+  "category": "furniture",
+  "source": "F63_ART"
+ },
+ "lich_a": {
+  "file": "assets/art/portraits/lich_a.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "UNDEAD_PORTRAITS"
+ },
+ "lich_b": {
+  "file": "assets/art/portraits/lich_b.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "UNDEAD_PORTRAITS"
+ },
+ "necromancer": {
+  "file": "assets/art/portraits/necromancer.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "UNDEAD_PORTRAITS"
+ },
+ "wraith": {
+  "file": "assets/art/portraits/wraith.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "UNDEAD_PORTRAITS"
+ },
+ "zombie": {
+  "file": "assets/art/portraits/zombie.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "UNDEAD_PORTRAITS"
+ },
+ "skeleton": {
+  "file": "assets/art/portraits/skeleton.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "UNDEAD_PORTRAITS"
+ },
+ "ghoul": {
+  "file": "assets/art/portraits/ghoul.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "UNDEAD_PORTRAITS"
+ },
+ "plaguebearer": {
+  "file": "assets/art/portraits/plaguebearer.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "UNDEAD_PORTRAITS"
+ },
+ "bone_golem": {
+  "file": "assets/art/portraits/bone_golem.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "UNDEAD_PORTRAITS"
+ },
+ "civ_m": {
+  "file": "assets/art/portraits/civ_m.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "UNDEAD_PORTRAITS"
+ },
+ "civ_f": {
+  "file": "assets/art/portraits/civ_f.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "UNDEAD_PORTRAITS"
+ },
+ "civ_x": {
+  "file": "assets/art/portraits/civ_x.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "UNDEAD_PORTRAITS"
+ },
+ "bld_anti_nuke": {
+  "file": "assets/art/buildings/bld_anti_nuke.png",
+  "w": 256,
+  "h": 256,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "funky_pants68": {
+  "file": "assets/art/units/funky_pants68.png",
+  "w": 120,
+  "h": 242,
+  "kind": "png",
+  "category": "units",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "arty_crew_human": {
+  "file": "assets/art/units/arty_crew_human.png",
+  "w": 143,
+  "h": 256,
+  "kind": "png",
+  "category": "units",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "arty_crew_ogre": {
+  "file": "assets/art/units/arty_crew_ogre.png",
+  "w": 133,
+  "h": 256,
+  "kind": "png",
+  "category": "units",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "arty_crew_elf": {
+  "file": "assets/art/units/arty_crew_elf.png",
+  "w": 152,
+  "h": 256,
+  "kind": "png",
+  "category": "units",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "arty_crew_gnome": {
+  "file": "assets/art/units/arty_crew_gnome.png",
+  "w": 143,
+  "h": 255,
+  "kind": "png",
+  "category": "units",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "arty_gnome": {
+  "file": "assets/art/units/arty_gnome.png",
+  "w": 384,
+  "h": 274,
+  "kind": "png",
+  "category": "units",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "arty_human": {
+  "file": "assets/art/units/arty_human.png",
+  "w": 384,
+  "h": 215,
+  "kind": "png",
+  "category": "units",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "arty_elf": {
+  "file": "assets/art/units/arty_elf.png",
+  "w": 384,
+  "h": 256,
+  "kind": "png",
+  "category": "units",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "arty_ogre": {
+  "file": "assets/art/units/arty_ogre.png",
+  "w": 384,
+  "h": 266,
+  "kind": "png",
+  "category": "units",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "arty_crew": {
+  "file": "assets/art/units/arty_crew.png",
+  "w": 96,
+  "h": 125,
+  "kind": "png",
+  "category": "units",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "veh_fire_truck": {
+  "file": "assets/art/vehicles/veh_fire_truck.png",
+  "w": 224,
+  "h": 196,
+  "kind": "png",
+  "category": "vehicles",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_archery_range": {
+  "file": "assets/art/buildings/bld_archery_range.png",
+  "w": 640,
+  "h": 427,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "boar": {
+  "file": "assets/art/animals/boar.png",
+  "w": 320,
+  "h": 241,
+  "kind": "png",
+  "category": "animals",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "moose": {
+  "file": "assets/art/animals/moose.png",
+  "w": 320,
+  "h": 284,
+  "kind": "png",
+  "category": "animals",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "lizard": {
+  "file": "assets/art/animals/lizard.png",
+  "w": 320,
+  "h": 223,
+  "kind": "png",
+  "category": "animals",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "oak_tree": {
+  "file": "assets/art/trees/oak_tree.png",
+  "w": 374,
+  "h": 512,
+  "kind": "png",
+  "category": "trees",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "pine_tree": {
+  "file": "assets/art/trees/pine_tree.png",
+  "w": 371,
+  "h": 512,
+  "kind": "png",
+  "category": "trees",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_house": {
+  "file": "assets/art/buildings/bld_house.png",
+  "w": 480,
+  "h": 480,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_hall": {
+  "file": "assets/art/buildings/bld_hall.png",
+  "w": 480,
+  "h": 358,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_townhall": {
+  "file": "assets/art/buildings/bld_townhall.png",
+  "w": 480,
+  "h": 360,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_inn": {
+  "file": "assets/art/buildings/bld_inn.png",
+  "w": 453,
+  "h": 480,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_shop": {
+  "file": "assets/art/buildings/bld_shop.png",
+  "w": 480,
+  "h": 388,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_general_store_gnome": {
+  "file": "assets/art/buildings/bld_general_store_gnome.png",
+  "w": 480,
+  "h": 320,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_general_store_human": {
+  "file": "assets/art/buildings/bld_general_store_human.png",
+  "w": 480,
+  "h": 320,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_general_store_elf": {
+  "file": "assets/art/buildings/bld_general_store_elf.png",
+  "w": 480,
+  "h": 320,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_general_store_ogre": {
+  "file": "assets/art/buildings/bld_general_store_ogre.png",
+  "w": 480,
+  "h": 320,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_guild_hall_gnome": {
+  "file": "assets/art/buildings/bld_guild_hall_gnome.png",
+  "w": 480,
+  "h": 320,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_guild_hall_human": {
+  "file": "assets/art/buildings/bld_guild_hall_human.png",
+  "w": 480,
+  "h": 640,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_guild_hall_elf": {
+  "file": "assets/art/buildings/bld_guild_hall_elf.png",
+  "w": 480,
+  "h": 320,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_guild_hall_ogre": {
+  "file": "assets/art/buildings/bld_guild_hall_ogre.png",
+  "w": 480,
+  "h": 320,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_civic": {
+  "file": "assets/art/buildings/bld_civic.png",
+  "w": 480,
+  "h": 346,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_barracks": {
+  "file": "assets/art/buildings/bld_barracks.png",
+  "w": 480,
+  "h": 317,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_tower": {
+  "file": "assets/art/buildings/bld_tower.png",
+  "w": 246,
+  "h": 480,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "wall_strip": {
+  "file": "assets/art/walls/wall_strip.png",
+  "w": 512,
+  "h": 464,
+  "kind": "png",
+  "category": "walls",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "wall_corner": {
+  "file": "assets/art/walls/wall_corner.png",
+  "w": 229,
+  "h": 240,
+  "kind": "png",
+  "category": "walls",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "wall_end": {
+  "file": "assets/art/walls/wall_end.png",
+  "w": 123,
+  "h": 320,
+  "kind": "png",
+  "category": "walls",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "gatehouse": {
+  "file": "assets/art/walls/gatehouse.png",
+  "w": 460,
+  "h": 294,
+  "kind": "png",
+  "category": "walls",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "gatehouse_v": {
+  "file": "assets/art/walls/gatehouse_v.png",
+  "w": 310,
+  "h": 1100,
+  "kind": "png",
+  "category": "walls",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "gatehouse_d1": {
+  "file": "assets/art/walls/gatehouse_d1.png",
+  "w": 799,
+  "h": 800,
+  "kind": "png",
+  "category": "walls",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "gatehouse_d2": {
+  "file": "assets/art/walls/gatehouse_d2.png",
+  "w": 800,
+  "h": 799,
+  "kind": "png",
+  "category": "walls",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_castle": {
+  "file": "assets/art/buildings/bld_castle.png",
+  "w": 803,
+  "h": 593,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_stable": {
+  "file": "assets/art/buildings/bld_stable.png",
+  "w": 924,
+  "h": 560,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_necropolis": {
+  "file": "assets/art/buildings/bld_necropolis.png",
+  "w": 480,
+  "h": 358,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_flesh_farm": {
+  "file": "assets/art/buildings/bld_flesh_farm.png",
+  "w": 560,
+  "h": 280,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_house_undead": {
+  "file": "assets/art/buildings/bld_house_undead.png",
+  "w": 480,
+  "h": 480,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_tavern_undead": {
+  "file": "assets/art/buildings/bld_tavern_undead.png",
+  "w": 453,
+  "h": 480,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_shop_undead": {
+  "file": "assets/art/buildings/bld_shop_undead.png",
+  "w": 480,
+  "h": 388,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_guild_undead": {
+  "file": "assets/art/buildings/bld_guild_undead.png",
+  "w": 1182,
+  "h": 1896,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_office_undead": {
+  "file": "assets/art/buildings/bld_office_undead.png",
+  "w": 480,
+  "h": 346,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "bld_barracks_undead": {
+  "file": "assets/art/buildings/bld_barracks_undead.png",
+  "w": 480,
+  "h": 317,
+  "kind": "png",
+  "category": "buildings",
+  "source": "TEX_SPRITE_SRC"
+ },
+ "fishing_boat": {
+  "file": "assets/art/boats/fishing_boat.png",
+  "w": 256,
+  "h": 184,
+  "kind": "png",
+  "category": "boats",
+  "source": "BOAT_SPRITE_SRC"
+ },
+ "war_ship": {
+  "file": "assets/art/boats/war_ship.png",
+  "w": 256,
+  "h": 187,
+  "kind": "png",
+  "category": "boats",
+  "source": "BOAT_SPRITE_SRC"
+ },
+ "portrait_human_0": {
+  "file": "assets/art/portraits/portrait_human_0.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_human_1": {
+  "file": "assets/art/portraits/portrait_human_1.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_human_2": {
+  "file": "assets/art/portraits/portrait_human_2.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_human_3": {
+  "file": "assets/art/portraits/portrait_human_3.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_human_4": {
+  "file": "assets/art/portraits/portrait_human_4.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_human_5": {
+  "file": "assets/art/portraits/portrait_human_5.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_human_6": {
+  "file": "assets/art/portraits/portrait_human_6.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_human_7": {
+  "file": "assets/art/portraits/portrait_human_7.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_ogre_0": {
+  "file": "assets/art/portraits/portrait_ogre_0.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_ogre_1": {
+  "file": "assets/art/portraits/portrait_ogre_1.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_ogre_2": {
+  "file": "assets/art/portraits/portrait_ogre_2.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_ogre_3": {
+  "file": "assets/art/portraits/portrait_ogre_3.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_ogre_4": {
+  "file": "assets/art/portraits/portrait_ogre_4.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_ogre_5": {
+  "file": "assets/art/portraits/portrait_ogre_5.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_ogre_6": {
+  "file": "assets/art/portraits/portrait_ogre_6.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_ogre_7": {
+  "file": "assets/art/portraits/portrait_ogre_7.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_elf_0": {
+  "file": "assets/art/portraits/portrait_elf_0.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_elf_1": {
+  "file": "assets/art/portraits/portrait_elf_1.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_elf_2": {
+  "file": "assets/art/portraits/portrait_elf_2.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_elf_3": {
+  "file": "assets/art/portraits/portrait_elf_3.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_elf_4": {
+  "file": "assets/art/portraits/portrait_elf_4.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_elf_5": {
+  "file": "assets/art/portraits/portrait_elf_5.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_elf_6": {
+  "file": "assets/art/portraits/portrait_elf_6.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_elf_7": {
+  "file": "assets/art/portraits/portrait_elf_7.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_gnome_0": {
+  "file": "assets/art/portraits/portrait_gnome_0.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_gnome_1": {
+  "file": "assets/art/portraits/portrait_gnome_1.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_gnome_2": {
+  "file": "assets/art/portraits/portrait_gnome_2.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_gnome_3": {
+  "file": "assets/art/portraits/portrait_gnome_3.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_gnome_4": {
+  "file": "assets/art/portraits/portrait_gnome_4.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_gnome_5": {
+  "file": "assets/art/portraits/portrait_gnome_5.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_gnome_6": {
+  "file": "assets/art/portraits/portrait_gnome_6.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "portrait_gnome_7": {
+  "file": "assets/art/portraits/portrait_gnome_7.webp",
+  "w": 0,
+  "h": 0,
+  "kind": "webp",
+  "category": "portraits",
+  "source": "NPC_PORTRAITS"
+ },
+ "jobtag0": {
+  "file": "assets/art/jobtags/jobtag0.png",
+  "w": 0,
+  "h": 0,
+  "kind": "png",
+  "category": "jobtags",
+  "source": "SPRITES54.jobtags"
+ },
+ "jobtag1": {
+  "file": "assets/art/jobtags/jobtag1.png",
+  "w": 0,
+  "h": 0,
+  "kind": "png",
+  "category": "jobtags",
+  "source": "SPRITES54.jobtags"
+ },
+ "jobtag2": {
+  "file": "assets/art/jobtags/jobtag2.png",
+  "w": 0,
+  "h": 0,
+  "kind": "png",
+  "category": "jobtags",
+  "source": "SPRITES54.jobtags"
+ },
+ "jobtag3": {
+  "file": "assets/art/jobtags/jobtag3.png",
+  "w": 0,
+  "h": 0,
+  "kind": "png",
+  "category": "jobtags",
+  "source": "SPRITES54.jobtags"
+ },
+ "jobtag4": {
+  "file": "assets/art/jobtags/jobtag4.png",
+  "w": 0,
+  "h": 0,
+  "kind": "png",
+  "category": "jobtags",
+  "source": "SPRITES54.jobtags"
+ },
+ "jobtag5": {
+  "file": "assets/art/jobtags/jobtag5.png",
+  "w": 0,
+  "h": 0,
+  "kind": "png",
+  "category": "jobtags",
+  "source": "SPRITES54.jobtags"
+ },
+ "jobtag6": {
+  "file": "assets/art/jobtags/jobtag6.png",
+  "w": 0,
+  "h": 0,
+  "kind": "png",
+  "category": "jobtags",
+  "source": "SPRITES54.jobtags"
+ },
+ "jobtag7": {
+  "file": "assets/art/jobtags/jobtag7.png",
+  "w": 0,
+  "h": 0,
+  "kind": "png",
+  "category": "jobtags",
+  "source": "SPRITES54.jobtags"
+ },
+ "jobtag8": {
+  "file": "assets/art/jobtags/jobtag8.png",
+  "w": 0,
+  "h": 0,
+  "kind": "png",
+  "category": "jobtags",
+  "source": "SPRITES54.jobtags"
+ },
+ "jobtag9": {
+  "file": "assets/art/jobtags/jobtag9.png",
+  "w": 0,
+  "h": 0,
+  "kind": "png",
+  "category": "jobtags",
+  "source": "SPRITES54.jobtags"
+ },
+ "jobtag10": {
+  "file": "assets/art/jobtags/jobtag10.png",
+  "w": 0,
+  "h": 0,
+  "kind": "png",
+  "category": "jobtags",
+  "source": "SPRITES54.jobtags"
+ },
+ "jobtag11": {
+  "file": "assets/art/jobtags/jobtag11.png",
+  "w": 0,
+  "h": 0,
+  "kind": "png",
+  "category": "jobtags",
+  "source": "SPRITES54.jobtags"
+ },
+ "jobtag12": {
+  "file": "assets/art/jobtags/jobtag12.png",
+  "w": 0,
+  "h": 0,
+  "kind": "png",
+  "category": "jobtags",
+  "source": "SPRITES54.jobtags"
+ }
+}

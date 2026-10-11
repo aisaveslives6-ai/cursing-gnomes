@@ -1,0 +1,136 @@
+name: iOS Build
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  GODOT_VERSION: "4.7.2"
+  APP_NAME: CursingGnomes
+
+concurrency:
+  group: ios-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read version
+        id: ver
+        run: |
+          V=$(grep -m1 '^config/version=' project.godot | sed 's/.*"\(.*\)".*/\1/' || true)
+          if [ -z "$V" ]; then V="1.0.0"; fi
+          echo "version=$V" >> "$GITHUB_OUTPUT"
+          echo "Building version $V"
+
+      - name: Cache Godot
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/godot-app
+            ~/Library/Application Support/Godot/export_templates
+          key: godot-macos-${{ env.GODOT_VERSION }}
+
+      - name: Install Godot + export templates
+        run: |
+          set -euo pipefail
+          if [ ! -d "$HOME/godot-app/Godot.app" ]; then
+            mkdir -p "$HOME/godot-app"
+            curl -fsSL -o /tmp/godot.zip \
+              "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_macos.universal.zip"
+            unzip -q /tmp/godot.zip -d "$HOME/godot-app"
+            xattr -cr "$HOME/godot-app/Godot.app" || true
+          fi
+          TPL_DIR="$HOME/Library/Application Support/Godot/export_templates/${GODOT_VERSION}.stable"
+          if [ ! -d "$TPL_DIR" ]; then
+            curl -fsSL -o /tmp/templates.tpz \
+              "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_export_templates.tpz"
+            unzip -q /tmp/templates.tpz -d /tmp/tpl
+            mkdir -p "$TPL_DIR"
+            mv /tmp/tpl/templates/* "$TPL_DIR"/
+          fi
+          "$HOME/godot-app/Godot.app/Contents/MacOS/Godot" --version
+
+      - name: Export iOS Xcode project
+        run: |
+          set -euo pipefail
+          GODOT="$HOME/godot-app/Godot.app/Contents/MacOS/Godot"
+          "$GODOT" --headless --path . --import
+          mkdir -p build/ios
+          "$GODOT" --headless --path . --export-release "iOS" "$PWD/build/ios/${APP_NAME}"
+          echo "--- exported files ---"
+          find build/ios -maxdepth 2 | head -40
+
+      - name: Select newest Xcode
+        run: |
+          set -euo pipefail
+          LATEST=$(ls -d /Applications/Xcode*.app | sort -V | tail -n1)
+          echo "Selecting: $LATEST"
+          sudo xcode-select -s "$LATEST/Contents/Developer"
+          xcodebuild -version
+
+      - name: Build unsigned .app
+        run: |
+          set -euo pipefail
+          PROJ=$(find build/ios -maxdepth 2 -name "*.xcodeproj" | head -n1)
+          if [ -z "$PROJ" ]; then
+            echo "No .xcodeproj produced by Godot export"; exit 1
+          fi
+          SCHEME=$(basename "$PROJ" .xcodeproj)
+          echo "Project: $PROJ Scheme: $SCHEME"
+          xcodebuild -project "$PROJ" -scheme "$SCHEME" -configuration Release \
+            -destination 'generic/platform=iOS' -derivedDataPath build/dd \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" \
+            DEVELOPMENT_TEAM="" DEBUG_INFORMATION_FORMAT=dwarf build \
+          || xcodebuild -project "$PROJ" -target "$SCHEME" -configuration Release \
+            -sdk iphoneos SYMROOT="$PWD/build/dd/Build/Products" \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" \
+            DEVELOPMENT_TEAM="" DEBUG_INFORMATION_FORMAT=dwarf build
+
+      - name: Package IPA
+        id: ipa
+        run: |
+          set -euo pipefail
+          APP=$(find build -type d -name "*.app" -path "*iphoneos*" | head -n1)
+          if [ -z "$APP" ]; then
+            echo "No .app found after build"; find build -maxdepth 5 -type d | head -60; exit 1
+          fi
+          echo "App bundle: $APP"
+          # Godot writes empty camera/mic/photo usage strings; strip them so
+          # sideloaders don't report undeclared permissions.
+          for k in NSCameraUsageDescription NSMicrophoneUsageDescription NSPhotoLibraryUsageDescription; do
+            /usr/libexec/PlistBuddy -c "Delete :$k" "$APP/Info.plist" 2>/dev/null || true
+          done
+          mkdir -p dist Payload
+          cp -R "$APP" Payload/
+          zip -qry "dist/${APP_NAME}.ipa" Payload
+          SIZE=$(stat -f%z "dist/${APP_NAME}.ipa")
+          echo "size=$SIZE" >> "$GITHUB_OUTPUT"
+          echo "IPA size: $SIZE bytes"
+
+      - name: Upload IPA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.APP_NAME }}-ipa
+          path: dist/*.ipa
+          retention-days: 7
+
+      - name: Update rolling latest release
+        if: github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          gh release delete latest --yes || true
+          git push origin :refs/tags/latest || true
+          gh release create latest "dist/${APP_NAME}.ipa" \
+            --title "${APP_NAME} v${{ steps.ver.outputs.version }}" \
+            --notes "Rolling build v${{ steps.ver.outputs.version }}. Sideload with AltStore/SideStore (free Apple ID)."

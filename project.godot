@@ -1,0 +1,72 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Cursing Gnomes — Godot 4 rewrite
+; Full GDScript rewrite of the HTML/JS browser RTS. NOT a port.
+
+config_version=5
+
+[application]
+
+config/name="Cursing Gnomes"
+config/description="A chaotic RTS: 4 factions, city building, chibi pixel-art gnomes (and friends), joke disasters, royal intrigue. Godot 4 native rewrite."
+run/main_scene="res://scenes/main.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="res://icon.svg"
+; NOTE: config/features version string must match the editor that last saved
+; the project. If the editor complains, open once in the GUI and re-save.
+
+boot_splash/bg_color=Color(0.102, 0.071, 0.047, 1)
+
+[autoload]
+
+; Global singletons. Config stays class-only (RefCounted, not a Node).
+; Autoload names intentionally differ from the class_names (GameState, EventBus)
+; so the classes remain instantiable via ClassName.new() everywhere.
+Game="*res://scripts/core/game_state.gd"
+Events="*res://scripts/core/event_bus.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+; canvas_items: 2D scales crisply, keeps pixel-art proportions.
+window/stretch/mode="canvas_items"
+; expand: use all available screen (notch phones, tablets) instead of black bars.
+window/stretch/aspect="expand"
+; Jeremy 2026-10-04: allow any orientation — portrait, landscape, desktop.
+; Sensor lets the device rotate freely; UI must adapt to all.
+window/handheld/orientation=6
+
+[input_devices]
+
+; Lets desktop mouse drive the touch code paths during development.
+pointing/emulate_touch_from_mouse=true
+; FIX 2026-10-02: touch must generate mouse events for Buttons/Controls
+; to work on iOS Safari. Without this, menu buttons are untappable.
+pointing/emulate_mouse_from_touch=true
+
+[rendering]
+
+; Compatibility (GLES3) renderer: the ONLY renderer that runs on all mobile
+; GPUs. Forward+ is desktop-only for our purposes. This is a hard requirement
+; for the iOS/Android targets — do not switch to Forward+.
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+; Pixel-art: no texture filtering, crisp pixels.
+textures/canvas_textures/default_texture_filter=0
+; 2D antialiasing off for perf on phones (MSAA is a per-export-preset option).
+anti_aliasing/quality/msaa_2d=0
+
+[physics]
+
+2d/run_on_separate_thread=true
+common/physics_ticks_per_second=60
+; 60 Hz logic: Godot targets 60 fps on mobile (the HTML 30 fps cap was a
+; Safari emergency fix, not the plan). Everything sim-side is delta-based,
+; so the rate change is free; budgets below keep per-tick work bounded.
+
+[debug]
+
+gdscript/warnings/untyped_declaration=1

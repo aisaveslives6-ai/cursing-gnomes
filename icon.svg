@@ -1,0 +1,16 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+<!-- Cursing Gnomes placeholder icon. Replace with real art before shipping. -->
+<rect width="128" height="128" rx="24" fill="#1a120c"/>
+<!-- gnome hat -->
+<path d="M64 12 L92 56 L36 56 Z" fill="#c0392b"/>
+<circle cx="64" cy="12" r="7" fill="#ecf0f1"/>
+<!-- face -->
+<ellipse cx="64" cy="72" rx="24" ry="20" fill="#f1c27d"/>
+<!-- beard -->
+<path d="M42 78 Q64 118 86 78 Q72 92 64 92 Q56 92 42 78 Z" fill="#e67e22"/>
+<!-- eyes -->
+<circle cx="55" cy="68" r="4" fill="#1a120c"/>
+<circle cx="73" cy="68" r="4" fill="#1a120c"/>
+<!-- nose -->
+<circle cx="64" cy="76" r="5" fill="#e8a06d"/>
+</svg>

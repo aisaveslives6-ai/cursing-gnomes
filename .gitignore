@@ -1,0 +1,18 @@
+# Godot
+.godot/
+exports/
+*.tmp
+
+# Signing / secrets — never commit
+*.keystore
+*.jks
+*.p12
+*.mobileprovision
+export_credentials.cfg
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor backups
+*~

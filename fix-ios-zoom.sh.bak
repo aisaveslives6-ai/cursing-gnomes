@@ -1,0 +1,154 @@
+#!/bin/bash
+# Fix iOS auto-zoom on keyboard input for Godot web export
+# Run after each export: ./fix-ios-zoom.sh
+HTML="$HOME/workspace/exports/web/index.html"
+
+# 1. Add maximum-scale=1.0 to viewport (prevents iOS auto-zoom)
+sed -i 's/content="width=device-width, user-scalable=no, initial-scale=1.0"/content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0"/' "$HTML"
+
+# 2. Inject anti-zoom JS before </body>
+# This forces Godot's VK input to 16px font (iOS won't zoom on 16px+ inputs)
+# and prevents gesture/pinch zoom
+python3 << 'PYEOF'
+import re
+
+html_path = "/home/hatch/workspace/exports/web/index.html"
+with open(html_path, 'r') as f:
+    content = f.read()
+
+# Skip if already patched
+if 'ios-zoom-fix' in content:
+    print("Already patched, skipping")
+else:
+    fix_js = '''
+<script>
+// ios-zoom-fix: prevent iOS Safari auto-zoom on virtual keyboard
+(function() {
+    // Force 16px font on any input Godot creates (iOS won't zoom on 16px+)
+    const style = document.createElement('style');
+    style.textContent = 'input, textarea, div.ime, [contenteditable="true"] { font-size: 50px !important; }';
+    document.head.appendChild(style);
+
+    // Watch for Godot's VK input and force 16px
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(m) {
+            m.addedNodes.forEach(function(node) {
+                if (node.tagName === 'INPUT' || node.tagName === 'TEXTAREA') {
+                    node.style.fontSize = '50px';
+                }
+            });
+        });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Catch IME div and any other focusable (GodotIME uses a 1px div!)
+    document.addEventListener('focusin', function(e) {
+        var t = e.target;
+        if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' ||
+            t.classList.contains('ime') || t.contentEditable === 'true') {
+            t.style.fontSize = '50px';
+        }
+    });
+
+    // Prevent double-tap zoom
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function(e) {
+        const now = Date.now();
+        if (now - lastTouchEnd <= 300) e.preventDefault();
+        lastTouchEnd = now;
+    }, { passive: false });
+
+    // Prevent pinch zoom
+    document.addEventListener('gesturestart', function(e) { e.preventDefault(); });
+    document.addEventListener('gesturechange', function(e) { e.preventDefault(); });
+})();
+</script>
+</body>'''
+    content = content.replace('</body>', fix_js)
+    with open(html_path, 'w') as f:
+        f.write(content)
+    print("iOS zoom fix applied")
+PYEOF
+
+# 3. Patch index.js: bake 50px fontSize into Godot's VK input creation
+# (export overwrites this, so re-apply every time)
+python3 << 'PYEOF'
+with open("/home/hatch/workspace/exports/web/index.js", 'r') as f:
+    js = f.read()
+old = 'elem.style.border="0px";elem.style.outline="none";'
+new = 'elem.style.border="0px";elem.style.outline="none";elem.style.fontSize="50px";'
+if old in js and 'fontSize="50px"' not in js[js.find(old):js.find(old)+120]:
+    js = js.replace(old, new)
+old2 = 'elem.style.display="block";elem.focus();'
+new2 = 'elem.style.display="block";elem.style.fontSize="50px";elem.focus();'
+if old2 in js:
+    js = js.replace(old2, new2)
+# GodotIME div uses 1px font — patch to 50px (iOS zooms on <16px)
+if 'ime.style.fontSize="1px"' in js:
+    js = js.replace('ime.style.fontSize="1px"', 'ime.style.fontSize="50px"')
+with open("/home/hatch/workspace/exports/web/index.js", 'w') as f:
+    f.write(js)
+print("JS fontSize patch applied")
+PYEOF
+
+# 4. Prevent canvas rescale when iOS keyboard opens/closes.
+# When the VK input shows, lock the canvas CSS size; restore on hide.
+python3 << 'PYEOF'
+html_path = "/home/hatch/workspace/exports/web/index.html"
+with open(html_path, 'r') as f:
+    content = f.read()
+
+if 'vk-canvas-lock' in content:
+    print("Canvas lock already present")
+else:
+    lock_js = '''
+<script>
+// vk-canvas-lock: keep canvas size stable when iOS keyboard opens/closes.
+// Godot's adaptive resize shrinks the canvas when the keyboard appears,
+// which looks like a zoom that never restores.
+(function() {
+    var canvas = null;
+    var lockedW = null, lockedH = null;
+    function getCanvas() {
+        if (!canvas) canvas = document.getElementById('canvas');
+        return canvas;
+    }
+    // Watch for Godot's VK input becoming visible/hidden.
+    var obs = new MutationObserver(function(muts) {
+        muts.forEach(function(m) {
+            if (m.type !== 'attributes' || m.attributeName !== 'style') return;
+            var el = m.target;
+            if (el.tagName !== 'INPUT' && el.tagName !== 'TEXTAREA') return;
+            var c = getCanvas();
+            if (!c) return;
+            if (el.style.display === 'block' && lockedW === null) {
+                // Keyboard opening: lock canvas to current size.
+                var r = c.getBoundingClientRect();
+                lockedW = r.width; lockedH = r.height;
+                c.style.width = lockedW + 'px';
+                c.style.height = lockedH + 'px';
+            } else if (el.style.display === 'none' && lockedW !== null) {
+                // Keyboard closed: release the lock, let Godot resize.
+                c.style.width = '';
+                c.style.height = '';
+                lockedW = null; lockedH = null;
+            }
+        });
+    });
+    // Start observing once body exists.
+    function start() {
+        if (document.body) {
+            obs.observe(document.body, { attributes: true, subtree: true, attributeFilter: ['style'] });
+        } else {
+            setTimeout(start, 100);
+        }
+    }
+    start();
+})();
+</script>
+</body>'''
+    content = content.replace('</body>', lock_js)
+    with open(html_path, 'w') as f:
+        f.write(content)
+    print("Canvas lock added")
+PYEOF
