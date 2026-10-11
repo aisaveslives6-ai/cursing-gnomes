@@ -217,6 +217,7 @@ header { position:relative; overflow:hidden; }
       <a class="btn btn-ghost" href="https://github.com/aisaveslives6-ai/cursing-gnomes/releases/download/latest/CursingGnomes.ipa" download>Download IPA</a>
     </div>
     <p class="hint" id="getHint">Tap <b>Get</b> — the store hands the game straight to your installer, which signs it with your Apple&nbsp;ID and installs it. One tap.</p>
+    <p class="hint hidden" id="installFallback" style="color:#ffb3b3;">SideStore didn't open — it's not on your phone yet. Switch Step 1 to <b>Not yet</b> and tick through the 5-tap checklist, then come back and smash Get. 🎮</p>
   </div>
 
   <!-- AUTO-UPDATE PROMPT (appears after install) -->
@@ -235,7 +236,8 @@ header { position:relative; overflow:hidden; }
     <div class="btn-row">
       <a class="btn btn-green" href="#" onclick="addSource(event,'sidestore')">Add to SideStore</a>
     </div>
-    <p class="hint">Activates once the store is hosted at its permanent link.</p>
+    <p class="hint">Live now — tap Add to SideStore and every update rolls in like a real App Store feed.</p>
+    <p class="hint hidden" id="sourceFallback" style="color:#ffb3b3;">SideStore didn't open — it's not on your phone yet. Switch Step 1 to <b>Not yet</b> and tick through the 5-tap checklist first.</p>
   </div>
 
   <!-- MY APPS / EXPIRY -->
@@ -274,7 +276,7 @@ header { position:relative; overflow:hidden; }
 
 <script>
 var IPA_URL = "https://github.com/aisaveslives6-ai/cursing-gnomes/releases/download/latest/CursingGnomes.ipa";
-var SOURCE_URL = "https://aisaveslives6-ai.github.io/cursing-gnomes/store/apps.json"; // live once hosted
+var SOURCE_URL = "https://aisaveslives6-ai.github.io/cursing-gnomes/store/apps.json"; // live at the permanent link
 var BUNDLE_ID = "com.ethosgames.cursinggnomes";
 
 function getInstaller() { return localStorage.getItem("eg_installer") || "sidestore"; }
@@ -315,13 +317,25 @@ function tickStep(i, val) {
   renderSteps();
 }
 
+function fireScheme(url, fallbackId) {
+  window.location.href = url;
+  // If no app handles the scheme, Safari errors and this page stays visible — show the guide instead of a dead end.
+  setTimeout(function () {
+    if (document.visibilityState === "visible" && fallbackId) {
+      var el = document.getElementById(fallbackId);
+      if (el) el.classList.remove("hidden");
+    }
+  }, 1800);
+}
+
 function installApp(e) {
   e.preventDefault();
   var inst = getInstaller();
   localStorage.setItem("eg_installed_at", Date.now().toString());
   localStorage.setItem("eg_pending_source", "1");
   renderExpiry();
-  window.location.href = inst + "://install?url=" + encodeURIComponent(IPA_URL);
+  document.getElementById("installFallback").classList.add("hidden");
+  fireScheme(inst + "://install?url=" + encodeURIComponent(IPA_URL), "installFallback");
 }
 
 function addSource(e, inst) {
@@ -329,12 +343,13 @@ function addSource(e, inst) {
   localStorage.setItem("eg_source_added", "1");
   localStorage.removeItem("eg_pending_source");
   document.getElementById("sourcePrompt").classList.add("hidden");
-  window.location.href = inst + "://source?url=" + encodeURIComponent(SOURCE_URL);
+  document.getElementById("sourceFallback").classList.add("hidden");
+  fireScheme(inst + "://source?url=" + encodeURIComponent(SOURCE_URL), "sourceFallback");
 }
 
 function refreshApps(e) {
   e.preventDefault();
-  window.location.href = getInstaller() + "://";
+  fireScheme(getInstaller() + "://", "installFallback");
 }
 
 function resetTracking(e) {
