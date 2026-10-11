@@ -31,6 +31,9 @@ const RELATION_BOOST := 15.0
 ## with driving physics instead of teleporting between stockpiles.
 const AIDWAGON_TYPE := "aidwagon"
 const AIDWAGON_DELIVER_RADIUS := 48.0
+## Inbound aid ("Request Aid") is capped per donor per day — the donor's
+## generosity is scarcer than the player's own giving (outbound cap is 3).
+const INBOUND_AID_PER_DAY := 2
 
 ## Aid-eligible helper jobs.
 const HELPER_JOBS := ["worker", "builder"]
@@ -449,6 +452,11 @@ func from_dict(data: Dictionary) -> void:
 
 ## Per-faction per-day caps so aid can't be spammed for infinite relations.
 var _player_aid_day: Dictionary = {}  # faction -> day of last player aid
+## Inbound ("Request Aid") caps: donor -> day/count. Without this the player
+## could spam Request Aid to drain an ally's whole stockpile and farm the
+## +8 relations per delivery (which also feeds the war-spare aid_given
+## kindness history). Transient like _player_aid_day — not saved.
+var _inbound_aid_day: Dictionary = {}
 
 
 ## Builder crew: dispatches the player's own workers/builders to the victim's
@@ -579,6 +587,18 @@ func request_inbound_aid(donor: String) -> Dictionary:
 	if sent <= 0.0:
 		return {"ok": false,
 			"msg": "The %s wish they could help — their stores are empty." % _fname(donor)}
+	# Per-donor daily cap (mirrors the outbound _player_aid_day cap): without
+	# it, repeated taps drain the donor's stockpile 100 food at a time and
+	# farm +8 relations per delivery. Cold/empty/war declines return above,
+	# so failed requests never consume quota.
+	var qday: int = _gs.day_number
+	var qkey := "inreq:%s" % donor
+	if int(_inbound_aid_day.get(qkey, -99)) == qday \
+			and int(_inbound_aid_day.get(qkey + ":n", 0)) >= INBOUND_AID_PER_DAY:
+		return {"ok": false,
+			"msg": "The %s have given all they can spare today." % _fname(donor)}
+	_inbound_aid_day[qkey] = qday
+	_inbound_aid_day[qkey + ":n"] = int(_inbound_aid_day.get(qkey + ":n", 0)) + 1
 	# The goods leave the donor's stockpile at dispatch — the wagon carries them.
 	_gs.resources.add_resource(donor, "food", -sent)
 	var s := _start_shipment(donor, me, "food", sent)
