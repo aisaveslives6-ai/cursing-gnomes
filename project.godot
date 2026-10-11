@@ -58,6 +58,10 @@ renderer/rendering_method.mobile="gl_compatibility"
 textures/canvas_textures/default_texture_filter=0
 ; 2D antialiasing off for perf on phones (MSAA is a per-export-preset option).
 anti_aliasing/quality/msaa_2d=0
+; iOS export REQUIRES this: without it, EditorExportPlatformAppleEmbedded
+; fails can_export with an empty "configuration errors" message (the
+; should_import_etc2_astc() check sets valid=false with no error text).
+textures/vram_compression/import_etc2_astc=true
 
 [physics]
 
