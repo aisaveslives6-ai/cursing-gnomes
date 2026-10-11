@@ -862,7 +862,10 @@ func _test_diplo_war_confirm() -> void:
 		String(dip.relation_state(pf, "ogres")) != "war")
 	# Find Cancel and press it — dialog closes, still no war.
 	var dlg: PanelContainer = (overlay.get_child(0) as CenterContainer).get_child(0)
-	var vbox: VBoxContainer = dlg.get_child(0)
+	# Menu-scroll audit (2026-10-10): the confirm dialog's vbox is wrapped in
+	# a ScrollContainer by _cap_modal_scroll — look through it to the buttons.
+	var scroll: ScrollContainer = dlg.get_child(0)
+	var vbox: VBoxContainer = scroll.get_child(0)
 	var cancel_btn: Button = null
 	var yes_btn: Button = null
 	for child: Node in vbox.get_children():
@@ -888,7 +891,8 @@ func _test_diplo_war_confirm() -> void:
 				break
 	_check("confirmation appears again", overlay2 != null)
 	var dlg2: PanelContainer = (overlay2.get_child(0) as CenterContainer).get_child(0)
-	var vbox2: VBoxContainer = dlg2.get_child(0)
+	var scroll2: ScrollContainer = dlg2.get_child(0)
+	var vbox2: VBoxContainer = scroll2.get_child(0)
 	for child: Node in vbox2.get_children():
 		if child is Button and "declare war" in (child as Button).text.to_lower():
 			(child as Button).pressed.emit()

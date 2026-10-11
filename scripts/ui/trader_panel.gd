@@ -248,19 +248,26 @@ func _build() -> void:
 	_vb = vb
 
 	# Stock line (HTML #funky-stock-line, icons + counts, no emoji).
+	# Jeremy 2026-10-11 (menu scroll audit): every display-only control in
+	# the scroll is MOUSE_FILTER_IGNORE so drags reach the ScrollContainer;
+	# Buttons keep STOP so taps still fire.
 	_stock_row = HBoxContainer.new()
+	_stock_row.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_stock_row.add_theme_constant_override("separation", 10)
 	vb.add_child(_stock_row)
 	for res in STOCK_ORDER:
 		var cell := HBoxContainer.new()
+		cell.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		cell.add_theme_constant_override("separation", 4)
 		var icon := TextureRect.new()
+		icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		icon.texture = Art.resource_icon(res)
 		icon.custom_minimum_size = Vector2(22, 22)
 		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		cell.add_child(icon)
 		var l := Label.new()
+		l.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		l.add_theme_font_size_override("font_size", 14)
 		l.add_theme_color_override("font_color", STOCK_PINK)
 		l.text = "—"
@@ -270,9 +277,11 @@ func _build() -> void:
 
 	# Title row: name + Back button (apps use a back button, never an X).
 	var title_row := HBoxContainer.new()
+	title_row.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	title_row.add_theme_constant_override("separation", 8)
 	vb.add_child(title_row)
 	var title := Label.new()
+	title.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	title.text = "Captain Funky Pants"
 	title.add_theme_font_size_override("font_size", 20)
 	title.add_theme_color_override("font_color", ACCENT_PINK)
@@ -286,6 +295,7 @@ func _build() -> void:
 	title_row.add_child(back)
 
 	var quote := Label.new()
+	quote.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	quote.text = "\"What do you want to trade, friend? Funky rates only!\""
 	quote.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	quote.add_theme_font_size_override("font_size", 14)
@@ -309,6 +319,7 @@ func _build() -> void:
 		vb.add_child(b)
 
 	var dep_head := Label.new()
+	dep_head.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	dep_head.text = "Deposit excess"
 	dep_head.add_theme_font_size_override("font_size", 15)
 	dep_head.add_theme_color_override("font_color", ACCENT_PINK)
@@ -328,6 +339,7 @@ func _build() -> void:
 		vb.add_child(b)
 
 	_msg = Label.new()
+	_msg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_msg.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_msg.add_theme_font_size_override("font_size", 14)
 	_msg.add_theme_color_override("font_color", Color(1.0, 0.85, 0.5))

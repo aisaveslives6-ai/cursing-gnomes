@@ -1779,6 +1779,9 @@ func _show_title() -> void:
 		logo_node = fallback
 	# Tagline: letter-spaced, #e8dcc8.
 	var tag := _lbl(TAGLINE, 13, C_TAGLINE)
+	# Jeremy 2026-10-11 (menu scroll audit): display-only — never swallow
+	# the title screen's ScrollContainer drag.
+	tag.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_spaced(tag, 2)
 	v.add_child(tag)
 	# Jeremy 2026-10-06 (launch readiness): one-shot notice (e.g. corrupt
@@ -1791,7 +1794,9 @@ func _show_title() -> void:
 		_pending_notice = ""
 	# Build splash: yellow, rotated -3deg, pulsing (matches .build-splash).
 	var splash_wrap := CenterContainer.new()
+	splash_wrap.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var splash := _lbl(random_splash(), 17, C_SPLASH)
+	splash.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	splash.add_theme_color_override("font_shadow_color", Color(0.25, 0.25, 0.0, 0.9))
 	splash.add_theme_constant_override("shadow_offset_x", _pxi(2))
 	splash.add_theme_constant_override("shadow_offset_y", _pxi(2))
@@ -1835,6 +1840,7 @@ func _show_title() -> void:
 	row2.add_child(b_hear)
 	# Footer: version/copyright, small and dim (SC1 has this at the bottom).
 	var footer := _lbl(MENU_FOOT, 11, C_FOOT)
+	footer.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	v.add_child(footer)
 	# Jeremy 2026-10-08 ("Tips?"): ONE thin tips line back on the title.
 	# Overlay pinned to the very bottom — floats above the background,

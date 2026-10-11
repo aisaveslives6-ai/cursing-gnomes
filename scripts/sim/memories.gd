@@ -204,7 +204,19 @@ const TYPES: Array[String] = ["hurt_by", "helped_by", "saved_by",
 	# the unhinged coveting the wheels, plain news, and the dealership
 	# opening itself.
 	"vehicle_proud", "vehicle_envy", "vehicle_mock", "vehicle_news",
-	"vehicle_thrill", "vehicle_dealer_news"]
+	"vehicle_thrill", "vehicle_dealer_news",
+	# Jeremy 2026-10-11 (hearsay flesh-out): fate-vote + peace-treaty
+	# memories — dread, thrill, mockery, relief, grief, gloating,
+	# shame, plain news for the vote; relief, suspicion, pride, news
+	# for the treaty.
+	"fatevote_dread", "fatevote_thrill", "fatevote_news", "fatevote_mock",
+	"fatevote_relief", "fatevote_grief", "fatevote_gloat", "fatevote_shame",
+	"treaty_relief", "treaty_suspicion", "treaty_news", "treaty_pride",
+	# Jeremy 2026-10-11 (hearsay flesh-out): disaster aid-vote memories —
+	# hope when the vote is called, thrill for the unhinged, news for the
+	# realm; relief/grief for the victim on the verdict, pride for helpers.
+	"aidvote_hope", "aidvote_thrill", "aidvote_news",
+	"aidvote_relief", "aidvote_grief", "aidvote_pride"]
 
 ## Relationship weight per memory type (positive = likes them).
 const REL_WEIGHT := {
@@ -459,6 +471,31 @@ const REL_WEIGHT := {
 	"vehicle_news": 0.0,
 	"vehicle_thrill": -0.2,
 	"vehicle_dealer_news": 0.0,
+	# Jeremy 2026-10-11 (hearsay flesh-out): fate-vote weights — dread
+	# and grief cool hard, mockery/gloating/shame cool like tavern
+	# laughter at someone's expense, relief and thrill warm; treaty
+	# weights — relief warms, suspicion cools, pride and news neutral.
+	"fatevote_dread": -0.5,
+	"fatevote_thrill": -0.2,
+	"fatevote_news": 0.0,
+	"fatevote_mock": -0.2,
+	"fatevote_relief": 0.5,
+	"fatevote_grief": -0.6,
+	"fatevote_gloat": -0.3,
+	"fatevote_shame": -0.4,
+	"treaty_relief": 0.4,
+	"treaty_suspicion": -0.2,
+	"treaty_news": 0.0,
+	"treaty_pride": 0.0,
+	# Jeremy 2026-10-11 (hearsay flesh-out): aid-vote weights — hope and
+	# relief warm, grief cools hard, pride is neutral-to-warm, news and
+	# the unhinged thrill neutral.
+	"aidvote_hope": 0.4,
+	"aidvote_thrill": 0.0,
+	"aidvote_news": 0.0,
+	"aidvote_relief": 0.5,
+	"aidvote_grief": -0.6,
+	"aidvote_pride": 0.2,
 	"wall_raised_sneer": 0.1,
 	"wall_raised_news": 0.0,
 	"wall_skipped_laugh": 0.1,

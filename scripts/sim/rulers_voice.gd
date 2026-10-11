@@ -5435,6 +5435,18 @@ func _abus_briefings() -> void:
 	_brief_guild_to_treasury()
 
 
+## Briefing send: topic-keyed like abus_send, but a stream never repeats
+## within the same day. Urgent streams still re-fire on later days (the
+## crisis persists); normal/routine wait out the 2-day bus cooldown.
+func _brief_send(from_id: int, to_id: int, text: String, prio: int,
+		topic: String) -> bool:
+	var day := int(_gs.get("day_number"))
+	var key := "%d|%d|%s" % [from_id, to_id, topic]
+	if int(_abus_cd.get(key, -99)) == day:
+		return false  # already briefed today
+	return abus_send(from_id, to_id, text, prio, topic)
+
+
 ## First active war's record. Empty when at peace (war briefings stay silent).
 func _brief_war_rec() -> Dictionary:
 	for foe: String in _gs.active_factions:
@@ -5487,7 +5499,7 @@ func _brief_war_to_treasury() -> void:
 	var prio := ABUS_NORMAL
 	if runway < 5.0 or _treasury() < TREASURY_TRIGGER:
 		prio = ABUS_URGENT
-	abus_send(int(war.get("id", 0)), int(tre.get("id", 0)),
+	_brief_send(int(war.get("id", 0)), int(tre.get("id", 0)),
 		"War with the %s: the war burns %d gold a day — %s. Brace the coffers." \
 		% [fname, int(burn), rw], prio, "brief_warburn")
 
@@ -5507,7 +5519,7 @@ func _brief_treasury_to_war() -> void:
 	var prio := ABUS_NORMAL
 	if gold < TREASURY_TRIGGER:
 		prio = ABUS_URGENT
-	abus_send(int(tre.get("id", 0)), int(war.get("id", 0)),
+	_brief_send(int(tre.get("id", 0)), int(war.get("id", 0)),
 		"The coffers hold %dg. Rein in the spending — no grand offensives on an empty purse, and the troops get paid FIRST." \
 		% int(gold), prio, "brief_coffers")
 
@@ -5524,7 +5536,7 @@ func _brief_civic_to_war() -> void:
 	var prio := ABUS_NORMAL
 	if today >= CRIME_REARM:
 		prio = ABUS_URGENT
-	abus_send(int(civ.get("id", 0)), int(war.get("id", 0)),
+	_brief_send(int(civ.get("id", 0)), int(war.get("id", 0)),
 		"Unrest in the towns — %d crimes today. The army's marching has the people on edge; keep the troops clear of the markets." \
 		% today, prio, "brief_unrest")
 
@@ -5551,7 +5563,7 @@ func _brief_war_to_civic() -> void:
 	if losing:
 		verdict = "We're bleeding, and the towns feel it."
 		prio = ABUS_URGENT
-	abus_send(int(war.get("id", 0)), int(civ.get("id", 0)),
+	_brief_send(int(war.get("id", 0)), int(civ.get("id", 0)),
 		"The war with the %s: we've lost %d, they've lost %d. %s" \
 		% [fname, ours, theirs, verdict], prio, "brief_warnews")
 
@@ -5565,7 +5577,7 @@ func _brief_guild_to_treasury() -> void:
 	var tre := _treasury_advisor()
 	if gld.is_empty() or tre.is_empty():
 		return
-	abus_send(int(gld.get("id", 0)), int(tre.get("id", 0)),
+	_brief_send(int(gld.get("id", 0)), int(tre.get("id", 0)),
 		"Weapons priority — the forges run day and night for the war. Keep the coin flowing; steel doesn't forge itself.",
 		ABUS_ROUTINE, "brief_arms")
 

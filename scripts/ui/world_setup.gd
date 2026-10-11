@@ -325,6 +325,7 @@ func _build() -> void:
 
 	# Preview in a gold frame.
 	var prev_frame := PanelContainer.new()
+	prev_frame.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var frame_sb := StyleBoxFlat.new()
 	frame_sb.bg_color = Color(0.10, 0.07, 0.05)
 	frame_sb.set_border_width_all(4)
@@ -336,6 +337,7 @@ func _build() -> void:
 	prev_frame.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	v.add_child(prev_frame)
 	_preview_tex = TextureRect.new()
+	_preview_tex.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	# Jeremy 2026-10-04: preview still too zoomed. Force the full map visible:
 	# smaller rect, FIT dimensions so the 512x512 bake fits entirely.
 	var prev_w := minf(vp0.x * 0.85, _s(420.0))
@@ -351,6 +353,7 @@ func _build() -> void:
 	v.add_child(pnote)
 
 	var bar := HBoxContainer.new()
+	bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	bar.alignment = BoxContainer.ALIGNMENT_CENTER
 	bar.add_theme_constant_override("separation", _si(10))
 	v.add_child(bar)
@@ -377,6 +380,9 @@ func _build() -> void:
 
 func _h1(t: String) -> Label:
 	var l := Label.new()
+	# Jeremy 2026-10-11 (menu scroll audit): display-only — never swallow
+	# the ScrollContainer's drag.
+	l.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	l.text = t
 	l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	l.add_theme_font_size_override("font_size", _si(48))
@@ -389,6 +395,7 @@ func _h1(t: String) -> Label:
 
 func _lbl(t: String, size: int, color: Color) -> Label:
 	var l := Label.new()
+	l.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	l.text = t
 	l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	l.add_theme_font_size_override("font_size", _si(size))
@@ -398,9 +405,11 @@ func _lbl(t: String, size: int, color: Color) -> Label:
 
 func _sec(t: String) -> HBoxContainer:
 	var row := HBoxContainer.new()
+	row.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	row.alignment = BoxContainer.ALIGNMENT_CENTER
 	row.add_theme_constant_override("separation", _si(10))
 	var line1 := ColorRect.new()
+	line1.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	line1.color = Color(0.788, 0.635, 0.153, 0.5)
 	line1.custom_minimum_size = Vector2(_s(60), 2)
 	line1.size_flags_vertical = Control.SIZE_SHRINK_CENTER
@@ -408,6 +417,7 @@ func _sec(t: String) -> HBoxContainer:
 	var l := _lbl(t, 26, Color(1.0, 0.87, 0.35))
 	row.add_child(l)
 	var line2 := ColorRect.new()
+	line2.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	line2.color = Color(0.788, 0.635, 0.153, 0.5)
 	line2.custom_minimum_size = Vector2(_s(60), 2)
 	line2.size_flags_vertical = Control.SIZE_SHRINK_CENTER
@@ -454,12 +464,14 @@ func _style_opt(b: Button, selected: bool, accent: Color = Color(0.788, 0.635, 0
 
 func _opt_group(d: Dictionary) -> VBoxContainer:
 	var vb := VBoxContainer.new()
+	vb.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	vb.add_theme_constant_override("separation", _si(4))
 	var head := _lbl(String(d["label"]), 22, Color(1.0, 0.835, 0.310))
 	vb.add_child(head)
 	# Jeremy 2026-10-03: flow container so the 3 x 170px cards wrap on phone
 	# widths — 510px overflows a 390px iPhone in a plain HBoxContainer.
 	var row := HFlowContainer.new()
+	row.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	row.alignment = FlowContainer.ALIGNMENT_CENTER
 	row.add_theme_constant_override("h_separation", _si(6))
 	row.add_theme_constant_override("v_separation", _si(6))

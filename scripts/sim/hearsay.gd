@@ -571,6 +571,54 @@ const TREATY_BREAK_LINES: Array[String] = [
 	"So much for the {f} alliance. Oathbreakers! Tell the bards — this needs a sad song.",
 	"The {f} broke faith. Never trust a {f} negotiator again. 💔",
 ]
+const FATEVOTE_START_LINES: Array[String] = [
+	"FATE VOTE on the {loser}! The {taker} called it after {town} fell — the realm decides: spare them or end them. \u2696\ufe0f",
+	"\u2696\ufe0f The {loser} are on trial! The {taker} took {town}, and now every faction votes. Spare or slaughter?",
+	"The realm gathers to judge the {loser}. The {taker} demand a fate vote after taking {town}. My money's on mercy. (It's not.)",
+	"Word from the war council: FATE VOTE called on the {loser} — the {taker} hold {town} now. The whole realm is holding its breath.",
+]
+const FATEVERDICT_SPARED_LINES: Array[String] = [
+	"SPARED! The realm voted mercy for the {loser} — {spare} to spare, {kill} for the kill. They live. For now. \U0001F54A\ufe0f",
+	"The {loser} LIVE! The fate vote came down {spare}\u2013{kill} for mercy. Somewhere, a warlord is furious.",
+	"Mercy wins for the {loser}: {spare} votes to spare, {kill} to kill. The realm exhales. \U0001F54A\ufe0f",
+	"The {loser} are SPARED — {spare} to {kill}. The bards are already writing the merciful version.",
+]
+const FATEVERDICT_CONDEMNED_LINES: Array[String] = [
+	"CONDEMNED. The realm voted to END the {loser} — {spare} for mercy, {kill} for the kill. No mercy. History will argue about this one. \u2694\ufe0f",
+	"The {loser} are finished — the fate vote went {spare} to spare, {kill} to kill. The realm shudders. \u2694\ufe0f",
+	"No mercy for the {loser}: {spare} votes to spare, {kill} to end them. The war drums fall silent. So do they.",
+	"The {loser} were condemned by the realm's own vote — {spare} pled for them, {kill} ended them. Remember the day mercy lost.",
+]
+const AIDVOTE_START_LINES: Array[String] = [
+	"AID VOTE called for the {victim}! {cause} hit them hard — the realm's factions vote: send builders, or leave them to the ashes. 🕊",
+	"🕊 The {victim} need help after {cause}. The factions are voting on aid — builders and strong backs, or silence.",
+	"Word from the council: AID VOTE for the {victim} — {cause} left them in ruins. Who answers? Who looks away?",
+	"The {victim} are begging for aid after {cause}. The realm votes. Kindness will be remembered — so will silence.",
+]
+const AIDVOTE_AIDED_LINES: Array[String] = [
+	"AIDED! The realm answered the {victim} — {helpers} are sending builders. {n} factions with strong backs. 🕊",
+	"The {victim} will rebuild! {helpers} voted yes — {n} factions sending aid. The realm remembers kindness. 🕊",
+	"Builders march for the {victim}: {helpers} answered the aid vote ({n} yes). Kindness travels on strong backs.",
+	"🕊 Aid approved for the {victim} — {helpers} ({n} factions) send help. The ashes won't settle in silence after all.",
+]
+const AIDVOTE_ALONE_LINES: Array[String] = [
+	"NO AID for the {victim}. The realm voted and looked away after {cause}. The ashes settle in silence. 🕯",
+	"The {victim} stand alone — nobody voted to help after {cause}. Remember who was silent. 🕯",
+	"Abandoned: the aid vote for the {victim} failed. {cause} took their homes; the realm took its shrug.",
+	"🕯 The {victim} got no aid after {cause}. Zero yes votes. The bards will sing about this silence.",
+]
+## Jeremy 2026-10-11 (hearsay flesh-out): disaster aid votes get their own
+## rumor kind. disaster_aid.gd emits aid_vote_started / aid_vote_resolved
+## with the public vote dict (id/victim/victim_name/cause/cause_text/votes;
+## helpers on resolve). An aid vote is called in the open council, so the
+## rumors are TRUTH_TRUE and doubt-immune like the fate vote — nobody
+## doubts the council met.
+const PEACETREATY_LINES: Array[String] = [
+	"PEACE! The {loser} and {taker} signed a treaty — {days} days of peace. Terms: {terms}. Guaranteed by {guarantors}. \U0001F54A\ufe0f",
+	"The ink is dry: {loser}\u2013{taker} peace treaty, {days} days. {terms}. The {guarantors} swear to hold it. \U0001F54A\ufe0f",
+	"War's over (for now): the {loser} yield to the {taker} — {days} days. Terms: {terms}. Guarantors: {guarantors}.",
+	"\U0001F54A\ufe0f Treaty signed! {loser} yields to {taker} — {days} days of {terms}. The {guarantors} stand witness. Drink up — peace is fragile.",
+]
 const TRIBUTE_LINES: Array[String] = [
 	"Tribute paid to the {f} — {a} gold for their patience. For now. 💰",
 	"Sent {a} gold to the {f}. Call it diplomacy. I call it extortion with extra steps. 💰",
@@ -1015,6 +1063,15 @@ const KIND_EMOTION := {
 	# Jeremy 2026-10-11 (hearsay flesh-out): dealership talk is happy
 	# commerce news — new wheels in town, somebody's showing off.
 	"vehicle": "helped",
+	# Jeremy 2026-10-11 (hearsay flesh-out): a fate vote is dread news —
+	# a whole faction on trial puts the realm on edge; a signed peace
+	# treaty is relief the realm can breathe about.
+	"fatevote": "dismayed",
+	"peacetreaty": "helped",
+	# Jeremy 2026-10-11 (hearsay flesh-out): an aid vote is kindness
+	# news — the realm voting to help (or refusing to) puts hope, or a
+	# chill, in the air.
+	"aidvote": "helped",
 }
 ## How strongly a heard rumor sticks in memory, by kind (0..1.2).
 const KIND_MEM_STRENGTH := {
@@ -1063,6 +1120,14 @@ const KIND_MEM_STRENGTH := {
 	# Jeremy 2026-10-11 (hearsay flesh-out): show-off talk sticks like
 	# tavern talk about a named citizen — it's about SOMEONE's wheels.
 	"vehicle": 0.45,
+	# Jeremy 2026-10-11 (hearsay flesh-out): a fate vote sticks like a
+	# named slaying — the realm remembers who was on trial; a peace
+	# treaty sticks like a peace pact.
+	"fatevote": 0.8,
+	"peacetreaty": 0.6,
+	# Jeremy 2026-10-11 (hearsay flesh-out): an aid vote sticks like a
+	# named slaying — the realm remembers who helped and who looked away.
+	"aidvote": 0.7,
 }
 ## Jeremy 2026-10-06: telephone-game distortion. Each hop of a rumor has
 ## a chance to mutate the text a little — gossip degrades with distance.
@@ -1138,6 +1203,17 @@ func _init(game_state: GameState, sim_phone = null) -> void:
 	_gs.bus.peace_made.connect(_on_peace)
 	_gs.bus.alliance_signed.connect(_on_alliance)
 	_gs.bus.treaty_broken.connect(_on_treaty_broken)
+	# Jeremy 2026-10-11 (hearsay flesh-out): war-spare fate votes and peace
+	# treaties are the realm's biggest political theatre — the grapevine
+	# hears the vote called, the verdict, and the treaty inked.
+	_gs.bus.spare_vote_started.connect(_on_spare_vote_started)
+	_gs.bus.spare_vote_resolved.connect(_on_spare_vote_resolved)
+	## Jeremy 2026-10-11 (hearsay flesh-out): disaster aid votes were
+	## gossip-silent — the aid-vote feature shipped with zero grapevine
+	## hooks. Now the council's kindness (or silence) gets talked about.
+	_gs.bus.aid_vote_started.connect(_on_aid_vote_started)
+	_gs.bus.aid_vote_resolved.connect(_on_aid_vote_resolved)
+	_gs.bus.treaty_signed.connect(_on_treaty_signed)
 	_gs.bus.tribute_paid.connect(_on_tribute)
 	# Jeremy 2026-10-04: the monthly disaster forecast posted/fired with
 	# nobody listening — the realm gossips about it (HTML
@@ -1859,14 +1935,20 @@ func _belief(teller: Dictionary, hearer: Dictionary, r: Dictionary) -> float:
 	# arrived. Weather arrivals (2026-10-10) join it too: the storm
 	# broke overhead — everybody saw the sky. Brigade rollouts
 	# (2026-10-10) join it too: the engine rolled through town with the
-	# bells ringing — nobody doubts a spectacle. The deniable kinds
-	# (smears, misc) take the full hit.
+	# bells ringing — nobody doubts a spectacle. Fate votes and peace
+	# treaties (2026-10-11) join it too: the vote is called in the open
+	# war council and the treaty is inked before witnesses — nobody
+	# doubts the realm's biggest political theatre happened. The deniable
+	# kinds (smears, misc) take the full hit.
 	if String(r.get("kind", "misc")) != "slur" \
 			and String(r.get("kind", "misc")) != "famine" \
 			and String(r.get("kind", "misc")) != "season" \
 			and String(r.get("kind", "misc")) != "weather" \
 			and String(r.get("kind", "misc")) != "brigade" \
 			and String(r.get("kind", "misc")) != "vehicle" \
+			and String(r.get("kind", "misc")) != "fatevote" \
+			and String(r.get("kind", "misc")) != "peacetreaty" \
+			and String(r.get("kind", "misc")) != "aidvote" \
 			and not bool(r.get("nuke", false)) \
 			and not bool(r.get("nuke_launch", false)):
 		b -= float(int(r.get("distortions", 0))) * DISTORT_BELIEF_EACH
@@ -2092,6 +2174,67 @@ func _spread_motivation(ku: Dictionary, r: Dictionary) -> Dictionary:
 					return {"cap_delta": 1, "heat_delta": 0.05}
 				if _rival_of(vkuf, vfact2):
 					return {"cap_delta": 1, "heat_delta": 0.1}
+			return {"cap_delta": 0, "heat_delta": 0.0}
+		"fatevote":
+			# Jeremy 2026-10-11 (hearsay flesh-out): a faction on trial is
+			# the talk of the realm — the doomed spread their dread, the
+			# takers savor it, rivals of the loser gloat-spread, and the
+			# unhinged thrill at the spectacle. A condemnation verdict
+			# electrifies the whole realm; a mercy verdict is the doomed
+			# spreading relief.
+			var ffact := String(r.get("fatevote_loser", ""))
+			var tfact := String(r.get("fatevote_taker", ""))
+			var fkuf := String(ku.get("faction", ""))
+			var fphase := String(r.get("fatevote_phase", ""))
+			var fresult := String(r.get("fatevote_result", ""))
+			if SimUnhinged.is_unhinged(ku):
+				return {"cap_delta": 1, "heat_delta": 0.1}
+			if ffact != "" and fkuf == ffact:
+				if fphase == "resolved" and fresult == "spared":
+					return {"cap_delta": 2, "heat_delta": 0.1}
+				return {"cap_delta": 2, "heat_delta": 0.15}
+			if tfact != "" and fkuf == tfact:
+				return {"cap_delta": 1, "heat_delta": 0.1}
+			if ffact != "" and _rival_of(fkuf, ffact):
+				return {"cap_delta": 1, "heat_delta": 0.1}
+			if fphase == "resolved" and fresult == "condemned":
+				return {"cap_delta": 1, "heat_delta": 0.05}
+			return {"cap_delta": 0, "heat_delta": 0.0}
+		"aidvote":
+			# Jeremy 2026-10-11 (hearsay flesh-out): kindness is the talk
+			# of the tavern — the victim's people spread word of the vote
+			# hoping for help, the helpers carry it proudly, and an
+			# abandoned victim's grief electrifies the neutrals.
+			var afact := String(r.get("aidvote_victim", ""))
+			var akuf := String(ku.get("faction", ""))
+			var aphase := String(r.get("aidvote_phase", ""))
+			var aresult := String(r.get("aidvote_result", ""))
+			var ahelpers: Array = r.get("aidvote_helpers", [])
+			if SimUnhinged.is_unhinged(ku):
+				return {"cap_delta": 1, "heat_delta": 0.1}
+			if afact != "" and akuf == afact:
+				if aphase == "resolved" and aresult == "alone":
+					return {"cap_delta": 2, "heat_delta": 0.15}
+				return {"cap_delta": 2, "heat_delta": 0.1}
+			if akuf != "" and ahelpers.has(akuf):
+				return {"cap_delta": 1, "heat_delta": 0.1}
+			if aphase == "resolved" and aresult == "alone":
+				return {"cap_delta": 1, "heat_delta": 0.05}
+			if aphase == "resolved" and aresult == "aided":
+				return {"cap_delta": 1, "heat_delta": 0.05}
+			return {"cap_delta": 0, "heat_delta": 0.0}
+		"peacetreaty":
+			# Jeremy 2026-10-11 (hearsay flesh-out): peace is news the
+			# signatories carry home and rivals mutter about — modest
+			# push, no frenzy.
+			var pf1 := String(r.get("treaty_loser", ""))
+			var pf2 := String(r.get("treaty_taker", ""))
+			var pkuf := String(ku.get("faction", ""))
+			if pf1 != "" and (pkuf == pf1 or pkuf == pf2):
+				return {"cap_delta": 1, "heat_delta": 0.05}
+			if (pf1 != "" and _rival_of(pkuf, pf1)) \
+				or (pf2 != "" and _rival_of(pkuf, pf2)):
+				return {"cap_delta": 1, "heat_delta": 0.05}
 			return {"cap_delta": 0, "heat_delta": 0.0}
 		"crime":
 			# Jeremy 2026-10-08 (hearsay flesh-out): name-and-shame
@@ -2702,6 +2845,28 @@ func _on_heard(u: Dictionary, r: Dictionary, teller: Dictionary) -> void:
 	# falls through to the generic path.
 	if kind == "vehicle" and String(r.get("vehicle_kind", "")) != "":
 		_vehicle_reaction(u, r)
+		return
+	# Jeremy 2026-10-11 (hearsay flesh-out): fate votes, aid votes and
+	# peace treaties get the full in-character reaction matrices (see
+	# _fatevote_reaction / _fateverdict_reaction / _aidvote_reaction /
+	# _aidverdict_reaction / _treaty_signed_reaction). Rich rumors carry
+	# fatevote_phase ("started"/"resolved"), aidvote_phase
+	# ("started"/"resolved") or treaty_loser; anything without them (old
+	# saves) falls through to the generic path.
+	if kind == "fatevote" and String(r.get("fatevote_phase", "")) != "":
+		if String(r.get("fatevote_phase", "")) == "resolved":
+			_fateverdict_reaction(u, r)
+		else:
+			_fatevote_reaction(u, r)
+		return
+	if kind == "aidvote" and String(r.get("aidvote_phase", "")) != "":
+		if String(r.get("aidvote_phase", "")) == "resolved":
+			_aidverdict_reaction(u, r)
+		else:
+			_aidvote_reaction(u, r)
+		return
+	if kind == "peacetreaty" and String(r.get("treaty_loser", "")) != "":
+		_treaty_signed_reaction(u, r)
 		return
 	_generic_heard(u, r)
 
@@ -3814,9 +3979,9 @@ func _event_post(lines: Array, kind: String, fill: Dictionary,
 	# try up to 8 picks to find a fresh one.
 	var line: String = ""
 	for attempt in 8:
-		var candidate: String = String(pool[randi() % pool.size()])
+		var candidate: String = str(pool[randi() % pool.size()])
 		for k: String in fill.keys():
-			candidate = candidate.replace("{%s}" % k, String(fill[k]))
+			candidate = candidate.replace("{%s}" % k, str(fill[k]))
 		if not candidate in _recent_lines:
 			line = candidate
 			break
@@ -4614,6 +4779,411 @@ func _on_treaty_broken(breaker: String, other: String) -> void:
 	r["betrayer"] = breaker
 	r["betrayed"] = other
 
+
+## Jeremy 2026-10-11 (hearsay flesh-out): {key} fill helper, mirroring
+## _event_post's substitution — one place so seed text and Squabble
+## posts can never drift apart.
+func _fill(line: String, fill: Dictionary) -> String:
+	var out := line
+	for k: String in fill.keys():
+		out = out.replace("{%s}" % k, str(fill[k]))
+	return out
+
+
+## Jeremy 2026-10-11 (hearsay flesh-out): the realm's biggest political
+## theatre — a FATE VOTE called when a town hall falls. war_spare.gd
+## emits spare_vote_started with the public vote dict
+## (loser/taker/town/votes); hearsay seeds a RICH kind-"fatevote" rumor
+## (heat 0.85 = PRESS_HEAT, so the Gazette can front-page it once it's
+## talked about), TRUTH_TRUE and doubt-immune — the vote is called in
+## the open war council, nobody doubts it happened.
+func _on_spare_vote_started(vote: Dictionary) -> void:
+	var loser := str(vote.get("loser", ""))
+	var taker := str(vote.get("taker", ""))
+	if loser == "" or taker == "":
+		return  # malformed vote — nothing to gossip about
+	var fill := {
+		"loser": str(vote.get("loser_name", loser)),
+		"taker": str(vote.get("taker_name", taker)),
+		"town": str(vote.get("town", "a fallen town")),
+	}
+	var vote_id := int(vote.get("id", 0))
+	var subject := "fatevote:%d" % vote_id
+	var fresh := _live_rumor("fatevote", subject).is_empty()
+	var r := seed_rumor(_fill(
+		FATEVOTE_START_LINES[randi() % FATEVOTE_START_LINES.size()], fill),
+		"fatevote", subject, 0.85, -1, false, TRUTH_TRUE)
+	r["fatevote_phase"] = "started"
+	r["fatevote_id"] = vote_id
+	r["fatevote_loser"] = loser
+	r["fatevote_taker"] = taker
+	r["fatevote_loser_name"] = str(fill["loser"])
+	r["fatevote_taker_name"] = str(fill["taker"])
+	r["fatevote_town"] = str(fill["town"])
+	if fresh:
+		_event_post(FATEVOTE_START_LINES, "fatevote", fill)
+
+
+## Jeremy 2026-10-11 (hearsay flesh-out): the verdict. war_spare.gd
+## emits spare_vote_resolved with result ("spared"/"condemned"),
+## spare_count, kill_count, and the per-voter votes. A second RICH
+## kind-"fatevote" rumor (subject fatevote:<id>:verdict, heat 0.9),
+## TRUTH_TRUE and doubt-immune. Unknown results are never gossiped.
+func _on_spare_vote_resolved(vote: Dictionary) -> void:
+	var loser := str(vote.get("loser", ""))
+	var taker := str(vote.get("taker", ""))
+	var result := str(vote.get("result", ""))
+	if loser == "" or taker == "":
+		return  # malformed vote — nothing to gossip about
+	if result != "spared" and result != "condemned":
+		return  # unknown verdict — don't gossip nonsense
+	var fill := {
+		"loser": str(vote.get("loser_name", loser)),
+		"spare": int(vote.get("spare_count", 0)),
+		"kill": int(vote.get("kill_count", 0)),
+	}
+	var vote_id := int(vote.get("id", 0))
+	var subject := "fatevote:%d:verdict" % vote_id
+	var fresh := _live_rumor("fatevote", subject).is_empty()
+	var lines: Array = FATEVERDICT_SPARED_LINES if result == "spared" \
+		else FATEVERDICT_CONDEMNED_LINES
+	var r := seed_rumor(_fill(str(lines[randi() % lines.size()]), fill),
+		"fatevote", subject, 0.9, -1, false, TRUTH_TRUE)
+	r["fatevote_phase"] = "resolved"
+	r["fatevote_id"] = vote_id
+	r["fatevote_loser"] = loser
+	r["fatevote_taker"] = taker
+	r["fatevote_loser_name"] = str(fill["loser"])
+	r["fatevote_result"] = result
+	r["fatevote_spare"] = int(fill["spare"])
+	r["fatevote_kill"] = int(fill["kill"])
+	r["fatevote_votes"] = (vote.get("votes", []) as Array).duplicate(true)
+	if fresh:
+		_event_post(lines, "fatevote", fill)
+
+
+## Jeremy 2026-10-11 (hearsay flesh-out): an AID VOTE called when disaster
+## strikes a faction. disaster_aid.gd emits aid_vote_started with the public
+## vote dict (id/victim/victim_name/cause/cause_text/votes); hearsay seeds a
+## RICH kind-"aidvote" rumor (heat 0.85 = PRESS_HEAT, so the Gazette can
+## front-page it once it's talked about), TRUTH_TRUE and doubt-immune —
+## the vote is called in the open council, nobody doubts it happened.
+func _on_aid_vote_started(vote: Dictionary) -> void:
+	var victim := str(vote.get("victim", ""))
+	if victim == "":
+		return  # malformed vote — nothing to gossip about
+	var fill := {
+		"victim": str(vote.get("victim_name", victim)),
+		"cause": str(vote.get("cause_text", "a natural disaster")),
+	}
+	var vote_id := int(vote.get("id", 0))
+	var subject := "aidvote:%d" % vote_id
+	var fresh := _live_rumor("aidvote", subject).is_empty()
+	var r := seed_rumor(_fill(
+		AIDVOTE_START_LINES[randi() % AIDVOTE_START_LINES.size()], fill),
+		"aidvote", subject, 0.85, -1, false, TRUTH_TRUE)
+	r["aidvote_phase"] = "started"
+	r["aidvote_id"] = vote_id
+	r["aidvote_victim"] = victim
+	r["aidvote_victim_name"] = str(fill["victim"])
+	r["aidvote_cause"] = str(fill["cause"])
+	if fresh:
+		_event_post(AIDVOTE_START_LINES, "aidvote", fill)
+
+
+## Jeremy 2026-10-11 (hearsay flesh-out): the verdict. disaster_aid.gd
+## emits aid_vote_resolved with result ("aided"/"alone") and the helpers
+## list. A second RICH kind-"aidvote" rumor (subject aidvote:<id>:verdict,
+## heat 0.8 for "aided" — good news travels fast — 0.9 for "alone":
+## an abandoned faction is a scandal), TRUTH_TRUE and doubt-immune.
+## Unknown results are never gossiped.
+func _on_aid_vote_resolved(vote: Dictionary) -> void:
+	var victim := str(vote.get("victim", ""))
+	var result := str(vote.get("result", ""))
+	if victim == "":
+		return  # malformed vote — nothing to gossip about
+	if result != "aided" and result != "alone":
+		return  # unknown verdict — don't gossip nonsense
+	var helpers: Array = (vote.get("helpers", []) as Array).duplicate()
+	var hnames: Array = []
+	for h in helpers:
+		hnames.append(_faction_name(str(h)))
+	var hstr := ", ".join(hnames) if not hnames.is_empty() else "no one"
+	var fill := {
+		"victim": str(vote.get("victim_name", victim)),
+		"cause": str(vote.get("cause_text", "a natural disaster")),
+		"helpers": hstr,
+		"n": helpers.size(),
+	}
+	var vote_id := int(vote.get("id", 0))
+	var subject := "aidvote:%d:verdict" % vote_id
+	var fresh := _live_rumor("aidvote", subject).is_empty()
+	var lines: Array = AIDVOTE_AIDED_LINES if result == "aided" \
+		else AIDVOTE_ALONE_LINES
+	var heat := 0.8 if result == "aided" else 0.9
+	var r := seed_rumor(_fill(str(lines[randi() % lines.size()]), fill),
+		"aidvote", subject, heat, -1, false, TRUTH_TRUE)
+	r["aidvote_phase"] = "resolved"
+	r["aidvote_id"] = vote_id
+	r["aidvote_victim"] = victim
+	r["aidvote_victim_name"] = str(fill["victim"])
+	r["aidvote_cause"] = str(fill["cause"])
+	r["aidvote_result"] = result
+	r["aidvote_helpers"] = helpers
+	r["aidvote_helper_names"] = hnames
+	r["aidvote_votes"] = (vote.get("votes", []) as Array).duplicate(true)
+	if fresh:
+		_event_post(lines, "aidvote", fill)
+
+
+## Jeremy 2026-10-11 (hearsay flesh-out): the ink dries. war_spare.gd
+## emits treaty_signed with the public treaty dict
+## (loser/taker/day_signed/duration_days/terms/guarantors). A RICH
+## kind-"peacetreaty" rumor at heat 0.7 — tavern talk, never the front
+## page (press_ok false), TRUTH_TRUE and doubt-immune: the treaty is
+## inked before witnesses.
+func _on_treaty_signed(treaty: Dictionary) -> void:
+	var loser := str(treaty.get("loser", ""))
+	var taker := str(treaty.get("taker", ""))
+	if loser == "" or taker == "":
+		return  # malformed treaty — nothing to gossip about
+	var terms: Array = []
+	for t in treaty.get("terms", []):
+		if t is Dictionary:
+			terms.append(str((t as Dictionary).get("label", "terms")))
+	var term_str := ", ".join(terms) if not terms.is_empty() else "peace"
+	var gnames: Array = []
+	for g in treaty.get("guarantor_names", []):
+		gnames.append(str(g))
+	var gstr := ", ".join(gnames) if not gnames.is_empty() else "no one"
+	var day := int(treaty.get("day_signed", 0))
+	var fill := {
+		"loser": str(treaty.get("loser_name", loser)),
+		"taker": str(treaty.get("taker_name", taker)),
+		"days": int(treaty.get("duration_days", 0)),
+		"terms": term_str,
+		"guarantors": gstr,
+	}
+	var subject := "peacetreaty:%s:%s:%d" % [loser, taker, day]
+	var fresh := _live_rumor("peacetreaty", subject).is_empty()
+	var r := seed_rumor(_fill(
+		PEACETREATY_LINES[randi() % PEACETREATY_LINES.size()], fill),
+		"peacetreaty", subject, 0.7, -1, false, TRUTH_TRUE)
+	r["treaty_loser"] = loser
+	r["treaty_taker"] = taker
+	r["treaty_loser_name"] = str(fill["loser"])
+	r["treaty_taker_name"] = str(fill["taker"])
+	r["treaty_days"] = int(fill["days"])
+	r["treaty_terms"] = terms
+	r["treaty_guarantors"] = (treaty.get("guarantors", []) as Array).duplicate(true)
+	r["press_ok"] = false
+	if fresh:
+		_event_post(PEACETREATY_LINES, "peacetreaty", fill)
+
+
+## The realm reacts to a CALLED fate vote in character — no dead-end
+## rumors:
+##   - the doomed faction feels dread ("fatevote_dread", disaster)
+##   - the taker's faction feels grim satisfaction ("fatevote_thrill", victory)
+##   - rivals of the loser mock the spectacle ("fatevote_mock", mocked)
+##   - the unhinged thrill at the theatre ("fatevote_thrill", cheerful)
+##   - everyone else is dismayed by the dread of it all ("fatevote_news")
+## Unhinged x1.5, matching the other matrices. All emotion args are
+## EVENT_MAP keys (emotion_audit-safe).
+func _fatevote_reaction(u: Dictionary, r: Dictionary) -> void:
+	if _mem == null:
+		return
+	var mult := 1.5 if SimUnhinged.is_unhinged(u) else 1.0
+	var uf := String(u.get("faction", ""))
+	var loser := String(r.get("fatevote_loser", ""))
+	var taker := String(r.get("fatevote_taker", ""))
+	var rid := int(r.get("id", 0))
+	var subject := String(r.get("subject", ""))
+	if SimUnhinged.is_unhinged(u):
+		_mem.remember(u, "fatevote_thrill", rid, subject, uf, 0.6)
+		_react_apply(u, 3.0 * mult, 0.0, "cheerful")
+		return
+	if loser != "" and uf == loser:
+		_mem.remember(u, "fatevote_dread", rid, subject, uf, 0.8)
+		_react_apply(u, -6.0 * mult, 0.0, "disaster")
+		return
+	if taker != "" and uf == taker:
+		_mem.remember(u, "fatevote_thrill", rid, subject, uf, 0.6)
+		_react_apply(u, 2.0 * mult, 0.0, "victory")
+		return
+	if loser != "" and _rival_of(uf, loser):
+		_mem.remember(u, "fatevote_mock", rid, subject, uf, 0.6)
+		_react_apply(u, 2.0 * mult, 0.0, "mocked")
+		return
+	_mem.remember(u, "fatevote_news", rid, subject, uf, 0.5)
+	_react_apply(u, -1.0 * mult, 0.0, "dismayed")
+
+
+## The verdict lands in character: the loser's faction feels relief or
+## grief ("fatevote_relief"/"fatevote_grief"), the taker's feels thwarted
+## shame or vindicated gloating ("fatevote_shame"/"fatevote_gloat"), and
+## every VOTER feels their own ballot's weight — spare-voters relieved
+## or dismayed, kill-voters vindicated or thwarted. The unhinged just
+## enjoy the show. Everything persists as memories + ruler-mood so the
+## talk surfaces in later dialogue.
+func _fateverdict_reaction(u: Dictionary, r: Dictionary) -> void:
+	if _mem == null:
+		return
+	var mult := 1.5 if SimUnhinged.is_unhinged(u) else 1.0
+	var uf := String(u.get("faction", ""))
+	var loser := String(r.get("fatevote_loser", ""))
+	var taker := String(r.get("fatevote_taker", ""))
+	var result := String(r.get("fatevote_result", ""))
+	var rid := int(r.get("id", 0))
+	var subject := String(r.get("subject", ""))
+	if SimUnhinged.is_unhinged(u):
+		_mem.remember(u, "fatevote_thrill", rid, subject, uf, 0.6)
+		_react_apply(u, 3.0 * mult, 0.0, "cheerful")
+		return
+	if loser != "" and uf == loser:
+		if result == "spared":
+			_mem.remember(u, "fatevote_relief", rid, subject, uf, 0.8)
+			_react_apply(u, 8.0 * mult, 0.0, "hopeful")
+		else:
+			_mem.remember(u, "fatevote_grief", rid, subject, uf, 0.8)
+			_react_apply(u, -8.0 * mult, 0.0, "disaster")
+		return
+	if taker != "" and uf == taker:
+		if result == "spared":
+			_mem.remember(u, "fatevote_shame", rid, subject, uf, 0.6)
+			_react_apply(u, -3.0 * mult, 0.0, "grumpy")
+		else:
+			_mem.remember(u, "fatevote_gloat", rid, subject, uf, 0.6)
+			_react_apply(u, 4.0 * mult, 0.0, "victory")
+		return
+	for v in r.get("fatevote_votes", []):
+		if not (v is Dictionary):
+			continue
+		var vd := v as Dictionary
+		if String(vd.get("voter", "")) == uf:
+			var choice := String(vd.get("vote", ""))
+			if result == "spared":
+				if choice == "spare":
+					_mem.remember(u, "fatevote_relief", rid, subject, uf, 0.7)
+					_react_apply(u, 4.0 * mult, 0.0, "hopeful")
+				else:
+					_mem.remember(u, "fatevote_shame", rid, subject, uf, 0.6)
+					_react_apply(u, -2.0 * mult, 0.0, "grumpy")
+			else:
+				if choice == "kill":
+					_mem.remember(u, "fatevote_gloat", rid, subject, uf, 0.7)
+					_react_apply(u, 3.0 * mult, 0.0, "victory")
+				else:
+					_mem.remember(u, "fatevote_grief", rid, subject, uf, 0.6)
+					_react_apply(u, -3.0 * mult, 0.0, "dismayed")
+			return
+	_mem.remember(u, "fatevote_news", rid, subject, uf, 0.5)
+	if result == "spared":
+		_react_apply(u, 1.0 * mult, 0.0, "cheerful")
+	else:
+		_react_apply(u, -1.0 * mult, 0.0, "dismayed")
+
+
+## The realm reacts to a CALLED aid vote in character — no dead-end
+## rumors:
+##   - the victim's faction feels hope ("aidvote_hope", hopeful)
+##   - the unhinged thrill at the theatre ("aidvote_thrill", cheerful)
+##   - everyone else is moved by the call for kindness ("aidvote_news")
+## Unhinged x1.5, matching the other matrices. All emotion args are
+## EVENT_MAP keys (emotion_audit-safe).
+func _aidvote_reaction(u: Dictionary, r: Dictionary) -> void:
+	if _mem == null:
+		return
+	var mult := 1.5 if SimUnhinged.is_unhinged(u) else 1.0
+	var uf := String(u.get("faction", ""))
+	var victim := String(r.get("aidvote_victim", ""))
+	var rid := int(r.get("id", 0))
+	var subject := String(r.get("subject", ""))
+	if SimUnhinged.is_unhinged(u):
+		_mem.remember(u, "aidvote_thrill", rid, subject, uf, 0.6)
+		_react_apply(u, 3.0 * mult, 0.0, "cheerful")
+		return
+	if victim != "" and uf == victim:
+		_mem.remember(u, "aidvote_hope", rid, subject, uf, 0.8)
+		_react_apply(u, 4.0 * mult, 0.0, "hopeful")
+		return
+	_mem.remember(u, "aidvote_news", rid, subject, uf, 0.5)
+	_react_apply(u, 1.0 * mult, 0.0, "helped")
+
+
+## The verdict lands in character: the victim's faction feels relief or
+## grief ("aidvote_relief"/"aidvote_grief"), the helpers feel pride
+## ("aidvote_pride", praised), the unhinged enjoy the show, and everyone
+## else is warmed by kindness or chilled by the silence ("aidvote_news").
+## Everything persists as memories + ruler-mood so the talk surfaces in
+## later dialogue.
+func _aidverdict_reaction(u: Dictionary, r: Dictionary) -> void:
+	if _mem == null:
+		return
+	var mult := 1.5 if SimUnhinged.is_unhinged(u) else 1.0
+	var uf := String(u.get("faction", ""))
+	var victim := String(r.get("aidvote_victim", ""))
+	var result := String(r.get("aidvote_result", ""))
+	var helpers: Array = r.get("aidvote_helpers", [])
+	var rid := int(r.get("id", 0))
+	var subject := String(r.get("subject", ""))
+	if SimUnhinged.is_unhinged(u):
+		_mem.remember(u, "aidvote_thrill", rid, subject, uf, 0.6)
+		_react_apply(u, 3.0 * mult, 0.0, "cheerful")
+		return
+	if victim != "" and uf == victim:
+		if result == "aided":
+			_mem.remember(u, "aidvote_relief", rid, subject, uf, 0.8)
+			_react_apply(u, 6.0 * mult, 0.0, "helped")
+		else:
+			_mem.remember(u, "aidvote_grief", rid, subject, uf, 0.8)
+			_react_apply(u, -8.0 * mult, 0.0, "disaster")
+		return
+	if uf != "" and helpers.has(uf):
+		_mem.remember(u, "aidvote_pride", rid, subject, uf, 0.6)
+		_react_apply(u, 3.0 * mult, 0.0, "praised")
+		return
+	_mem.remember(u, "aidvote_news", rid, subject, uf, 0.5)
+	if result == "aided":
+		_react_apply(u, 2.0 * mult, 0.0, "helped")
+	else:
+		_react_apply(u, -2.0 * mult, 0.0, "dismayed")
+
+
+## The realm reads a signed peace treaty in character: the signatories
+## feel relief ("treaty_relief", helped), the guarantors feel pride
+## ("treaty_pride", praised), rivals of either side mutter suspicion
+## ("treaty_suspicion", dismayed), the unhinged enjoy the news, and
+## everyone else is just glad the killing paused ("treaty_news").
+func _treaty_signed_reaction(u: Dictionary, r: Dictionary) -> void:
+	if _mem == null:
+		return
+	var mult := 1.5 if SimUnhinged.is_unhinged(u) else 1.0
+	var uf := String(u.get("faction", ""))
+	var loser := String(r.get("treaty_loser", ""))
+	var taker := String(r.get("treaty_taker", ""))
+	var guarantors: Array = r.get("treaty_guarantors", [])
+	var rid := int(r.get("id", 0))
+	var subject := String(r.get("subject", ""))
+	if SimUnhinged.is_unhinged(u):
+		_mem.remember(u, "treaty_news", rid, subject, uf, 0.5)
+		_react_apply(u, 2.0 * mult, 0.0, "cheerful")
+		return
+	if (loser != "" and uf == loser) or (taker != "" and uf == taker):
+		_mem.remember(u, "treaty_relief", rid, subject, uf, 0.7)
+		_react_apply(u, 4.0 * mult, 0.0, "helped")
+		return
+	if uf != "" and guarantors.has(uf):
+		_mem.remember(u, "treaty_pride", rid, subject, uf, 0.6)
+		_react_apply(u, 3.0 * mult, 0.0, "praised")
+		return
+	if (loser != "" and _rival_of(uf, loser)) \
+		or (taker != "" and _rival_of(uf, taker)):
+		_mem.remember(u, "treaty_suspicion", rid, subject, uf, 0.6)
+		_react_apply(u, -1.0 * mult, 0.0, "dismayed")
+		return
+	_mem.remember(u, "treaty_news", rid, subject, uf, 0.4)
+	_react_apply(u, 2.0 * mult, 0.0, "helped")
 
 func _on_tribute(from_faction: String, to_faction: String, _res: String, amount: float) -> void:
 	_event_post(TRIBUTE_LINES, "news",

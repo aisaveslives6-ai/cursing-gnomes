@@ -45,6 +45,13 @@ const TYPES := {
 	# fire station; firefighters mount up at the station lot.
 	"firetruck": {"max_speed": 62.0, "accel": 26.0, "brake": 55.0,
 		"turn_rate": 2.0, "radius": 13.0, "wear_mult": 3.0},
+	# Jeremy 2026-10-11 tap-menu aid: horse-drawn relief wagon
+	# (canvas-topped, goods-laden — never a modern truck). Rolls when the
+	# player sends resource aid from the tap menu; visibly hauls the goods
+	# to the recipient's hall, then drives home and stands down. Renders
+	# with the covered-wagon art until it gets its own pass.
+	"aidwagon": {"max_speed": 52.0, "accel": 24.0, "brake": 50.0,
+		"turn_rate": 1.9, "radius": 12.0, "wear_mult": 2.5},
 }
 
 ## Max riders besides the driver (a fire crew is 2-3; 5 is headroom).

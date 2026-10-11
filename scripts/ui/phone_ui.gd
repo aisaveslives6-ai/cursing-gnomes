@@ -237,7 +237,7 @@ const HOME_APPS := [
 	["gazette", "News", "res://assets/ui/phone/app_gazette.png"],
 	["policies", "Policies", "res://assets/ui/phone/app_policies.png"],
 	["diplomacy", "Diplomacy", "res://assets/ui/phone/app_diplomacy.png"],
-	["calendar", "Calendar", "res://assets/ui/phone/app_calendar.png"],
+	["calendar", "Forecast", "res://assets/ui/phone/app_calendar.png"],
 	["wallpaper", "Wallpaper", "res://assets/ui/phone/app_wallpaper.png"],
 	["keyboard", "Keyboard", "res://assets/ui/phone/app_keyboard.png"],
 	## Jeremy 2026-10-04: dedicated Weather app (was only a section of
@@ -2432,6 +2432,21 @@ func _ignore_mouse(n: Node) -> void:
 		_ignore_mouse(c)
 
 
+## Jeremy 2026-10-11 (menu-scroll audit, standing priority #1): drag-safe
+## variant for scrollable rows that CONTAIN buttons — every Control in the
+## subtree becomes MOUSE_FILTER_IGNORE except Button subtrees, which keep
+## STOP so they stay tappable. Mirrors PhoneRumors._scroll_safe: a drag
+## starting anywhere on the row (but not on a button) must reach the
+## ScrollContainer instead of dying on a default-STOP PanelContainer/Label.
+static func _drag_safe(n: Node) -> void:
+	if n is Button:
+		return
+	if n is Control:
+		(n as Control).mouse_filter = Control.MOUSE_FILTER_IGNORE
+	for c in n.get_children():
+		_drag_safe(c)
+
+
 ## Circular avatar with an initial (fallback when no sprite exists).
 func _avatar(initial: String, color: Color, px: float = PFP_MD) -> PanelContainer:
 	var p := PanelContainer.new()
@@ -3403,6 +3418,10 @@ func _counsel_button_row(uid: int) -> Control:
 	deny_b.pressed.connect(func() -> void: _pop(deny_b))
 	row.add_child(accept_b)
 	row.add_child(deny_b)
+	# Menu-scroll audit: the row background (gaps between the buttons) sits
+	# inside the thread's ScrollContainer — IGNORE it so drags scroll, while
+	# the Accept/Deny buttons keep STOP and stay tappable.
+	_drag_safe(row)
 	return row
 
 
@@ -3460,6 +3479,8 @@ func _gnomba_button_row(uid: int) -> Control:
 	block_b.pressed.connect(func() -> void: _pop(block_b))
 	row.add_child(send_b)
 	row.add_child(block_b)
+	# Menu-scroll audit: drag-safe row background (buttons stay tappable).
+	_drag_safe(row)
 	return row
 
 
@@ -3513,6 +3534,8 @@ func _podcast_button_row(uid: int) -> Control:
 	unplug_b.pressed.connect(func() -> void: _pop(unplug_b))
 	row.add_child(sponsor_b)
 	row.add_child(unplug_b)
+	# Menu-scroll audit: drag-safe row background (buttons stay tappable).
+	_drag_safe(row)
 	return row
 
 
@@ -3531,6 +3554,9 @@ func _receipt_label(status: String) -> Label:
 	rl.add_theme_font_size_override("font_size", FONT_XS)
 	rl.add_theme_color_override("font_color", Color(0.55, 0.55, 0.55))
 	rl.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	# Menu-scroll audit: read receipts render inside the thread's
+	# ScrollContainer — a default-STOP Label would swallow drags.
+	rl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	return rl
 
 
@@ -3676,6 +3702,9 @@ func _show_typing_indicator() -> void:
 	row.add_child(sp)
 	_thread_box.add_child(row)
 	_typing_row = row
+	# Menu-scroll audit: the typing bubble sits inside the thread's
+	# ScrollContainer — its row/panel/labels must not swallow drags.
+	_drag_safe(row)
 	_fade_in_row(row)
 	# Animate the dots: "", ".", "..", "..." cycling.
 	_typing_dot_n = 0
@@ -4344,6 +4373,9 @@ func _day_divider(text: String) -> HBoxContainer:
 	lab.add_theme_color_override("font_color", PH_ACCENT)
 	pill.add_child(lab)
 	row.add_child(pill)
+	# Menu-scroll audit: the divider sits inside the thread's ScrollContainer —
+	# its row/pill/label must not swallow drags.
+	_drag_safe(row)
 	return row
 
 
@@ -6027,7 +6059,7 @@ func _press_plague_policy(pol, key: String) -> void:
 func _show_calendar() -> void:
 	_screen = "calendar"
 	_clear()
-	_header("Calendar")
+	_header("Forecast")
 	var sc := _scroll()
 	var box: VBoxContainer = sc.get_child(0)
 	var s = _gs.seasons if _gs != null else null

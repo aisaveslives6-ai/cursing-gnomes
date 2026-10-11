@@ -26,6 +26,12 @@ const HELPERS_PER_FACTION := 3
 const AID_VOTE_COOLDOWN_DAYS := 10
 const RELATION_BOOST := 15.0
 
+## Visible aid caravans (Jeremy 2026-10-11 tap-menu order: "Aid missions
+## visibly travel, deliver, return"). Resource aid rides a real aidwagon
+## with driving physics instead of teleporting between stockpiles.
+const AIDWAGON_TYPE := "aidwagon"
+const AIDWAGON_DELIVER_RADIUS := 48.0
+
 ## Aid-eligible helper jobs.
 const HELPER_JOBS := ["worker", "builder"]
 
@@ -39,6 +45,8 @@ var _mission_seq := 0
 var _active_vote: Dictionary = {}
 var _vote_cooldown: Dictionary = {}  # victim -> day
 var _tick_accum := 0.0
+var _shipments: Array = []  # active aid-wagon shipments (visible caravans)
+var _shipment_seq := 0
 
 
 func _init(game_state) -> void:
@@ -290,6 +298,7 @@ func tick(delta: float) -> void:
 			_tick_helper(u, am, victim, expired)
 		if expired and _mission_units_done(m):
 			_finish_mission(m)
+	_tick_shipments()
 
 
 ## Repair speed (hp/sec per helper) and the radius they canvas for damage.
@@ -414,6 +423,8 @@ func to_dict() -> Dictionary:
 		"missions": _missions,
 		"mission_seq": _mission_seq,
 		"vote_cooldown": _vote_cooldown,
+		"shipments": _shipments,
+		"shipment_seq": _shipment_seq,
 	}
 
 
@@ -421,6 +432,8 @@ func from_dict(data: Dictionary) -> void:
 	_missions = (data.get("missions", []) as Array).duplicate(true)
 	_mission_seq = int(data.get("mission_seq", 0))
 	_vote_cooldown = (data.get("vote_cooldown", {}) as Dictionary).duplicate(true)
+	_shipments = (data.get("shipments", []) as Array).duplicate(true)
+	_shipment_seq = int(data.get("shipment_seq", 0))
 	_active_vote = {}
 	# Re-mark live helper units (their aid_mission dicts were saved on the
 	# units themselves via the unit records — nothing extra needed).
@@ -488,8 +501,11 @@ func dispatch_player_aid(victim: String, site_pos: Vector2) -> Dictionary:
 		"msg": "Builder crew dispatched to %s lands." % _fname(victim)}
 
 
-## Resource aid: straight transfer of food/wood/gold/oil. Costs real
-## stockpile; the helped faction warms to you.
+## Resource aid: the goods leave your stockpile onto a real relief wagon
+## that visibly hauls them to the recipient's hall (Jeremy 2026-10-11
+## tap-menu order: "Aid missions visibly travel, deliver, return").
+## Delivery — and the relations boost with it — happens when the wagon
+## arrives, not when it leaves.
 func send_player_resources(victim: String, resource: String,
 		amount: float) -> Dictionary:
 	var me := String(_gs.player_faction)
@@ -513,19 +529,166 @@ func send_player_resources(victim: String, resource: String,
 	var sent: float = minf(maxf(0.0, amount), have)
 	if sent <= 0.0:
 		return {"ok": false, "msg": "You have no %s to send." % resource}
+	# The goods leave your stockpile at dispatch — the wagon carries them.
 	_gs.resources.add_resource(me, resource, -sent)
-	_gs.resources.add_resource(victim, resource, sent)
-	_gs.diplomacy.adjust_score(victim, me, 8.0)
-	_gs.diplomacy.record_event(victim, me, "aid_given", me)
 	_player_aid_day[key] = day
 	_player_aid_day[key + ":n"] = int(_player_aid_day.get(key + ":n", 0)) + 1
+	var s := _start_shipment(me, victim, resource, sent)
+	if s.is_empty():
+		# No hall to roll out from (or no vehicle system): the old
+		# abstract transfer keeps aid working in the degenerate case.
+		_gs.resources.add_resource(victim, resource, sent)
+		_gs.diplomacy.adjust_score(victim, me, 8.0)
+		_gs.diplomacy.record_event(victim, me, "aid_given", me)
+		SimGazette.publish_or_emit(_gs,
+			"%s sends %s to the %s" % [_fname(me), resource, _fname(victim)],
+			"On day %d, %d %s changed hands from %s to %s — aid, freely given." % [
+				day, int(sent), resource, _fname(me), _fname(victim)],
+			"court")
+		return {"ok": true, "sent": sent, "abstract": true,
+			"msg": "Sent %d %s to the %s." % [int(sent), resource, _fname(victim)]}
+	return {"ok": true, "sent": sent, "shipment": s,
+		"msg": "Relief wagon dispatched to the %s with %d %s." % [
+			_fname(victim), int(sent), resource]}
+
+
+## --- inbound aid --------------------------------------------------------------
+## The tap-menu "Request Aid" path (Jeremy 2026-10-11 tap-menu order:
+## "Aid missions visibly travel, deliver, return"). The player asks a friendly
+## faction for help; when they agree, a real relief wagon rolls out of the
+## DONOR's hall hauling food to the player's hall — the reverse leg of the
+## outbound caravan, nothing teleports. The donor debits its own stockpile
+## at dispatch; the player is credited when the wagon ARRIVES, and relations
+## warm then. A cold-shouldered request (relations < 30) costs 2 relation
+## points; an empty donor store declines politely with no penalty.
+func request_inbound_aid(donor: String) -> Dictionary:
+	var me := String(_gs.player_faction)
+	if donor == "" or donor == me:
+		return {"ok": false, "msg": "That's your own land."}
+	if not (donor in _gs.active_factions):
+		return {"ok": false, "msg": "Unknown faction."}
+	if _gs.diplomacy.relation_state(me, donor) == "war":
+		return {"ok": false,
+			"msg": "You are at war with the %s — they won't feed the enemy." % _fname(donor)}
+	if _gs.diplomacy.relation_score(donor, me) < 30.0:
+		_gs.diplomacy.adjust_score(me, donor, -2.0)
+		return {"ok": false,
+			"msg": "The %s decline — relations too cold." % _fname(donor)}
+	var have: float = _gs.resources.get_amount(donor, "food")
+	var sent: float = minf(100.0, maxf(0.0, have))
+	if sent <= 0.0:
+		return {"ok": false,
+			"msg": "The %s wish they could help — their stores are empty." % _fname(donor)}
+	# The goods leave the donor's stockpile at dispatch — the wagon carries them.
+	_gs.resources.add_resource(donor, "food", -sent)
+	var s := _start_shipment(donor, me, "food", sent)
+	if s.is_empty():
+		# Degenerate case (no hall / no vehicle system): the old abstract
+		# transfer keeps the request working.
+		_gs.resources.add_resource(me, "food", sent)
+		_gs.diplomacy.adjust_score(me, donor, 8.0)
+		_gs.diplomacy.record_event(me, donor, "aid_given", donor)
+		return {"ok": true, "sent": sent, "abstract": true,
+			"msg": "The %s sent %d food in aid." % [_fname(donor), int(sent)]}
+	return {"ok": true, "sent": sent, "shipment": s,
+		"msg": "A relief wagon rolls out of the %s lands with %d food." % [
+			_fname(donor), int(sent)]}
+
+
+## --- visible aid caravans ----------------------------------------------------------
+## Jeremy 2026-10-11 tap-menu order: "Aid missions visibly travel, deliver,
+## return." Each resource-aid dispatch spawns a real aidwagon (driving
+## physics, prefers roads like every other vehicle) that hauls the goods
+## from the sender's hall to the recipient's hall, then drives home and
+## stands down. Nothing teleports.
+
+
+## Hall position for a faction's aid traffic: the wagon rolls out from the
+## sender's hall and delivers at the recipient's hall. (-1, -1) when the
+## faction holds no hall.
+func _aid_hall_pos(faction: String) -> Vector2:
+	var halls: Array = SimTerritory.halls_of(_gs.buildings, faction)
+	if halls.is_empty():
+		return Vector2(-1, -1)
+	return (halls[0] as Dictionary).get("position", Vector2.ZERO)
+
+
+## Starts a visible aid shipment. Returns the shipment record, or {} when
+## no wagon could roll — the caller falls back to the abstract transfer.
+func _start_shipment(me: String, victim: String, resource: String,
+		sent: float) -> Dictionary:
+	var veh = _gs.get("vehicles")
+	if veh == null:
+		return {}
+	var home := _aid_hall_pos(me)
+	var site := _aid_hall_pos(victim)
+	if home.x < 0.0 or site.x < 0.0:
+		return {}
+	var w: Dictionary = (veh as SimVehicles).spawn_vehicle(
+		AIDWAGON_TYPE, home, me)
+	if w.is_empty():
+		return {}
+	var vid := int(w.get("id", -1))
+	(veh as SimVehicles).drive_to(vid, site)
+	var s := {"id": _shipment_seq, "from": me, "to": victim,
+		"resource": resource, "amount": sent, "vehicle_id": vid,
+		"site_pos": site, "home_pos": home, "phase": "outbound",
+		"status": "active"}
+	_shipment_seq += 1
+	_shipments.append(s)
 	var bus = _gs.get("bus")
 	if bus != null and bus.has_signal("aid_shipment_sent"):
 		bus.aid_shipment_sent.emit(me, victim, resource, sent)
+	return s
+
+
+## Per-tick driver for aid shipments (called from tick(), 1 Hz): watches
+## each wagon, delivers on arrival, sends it home, stands it down.
+func _tick_shipments() -> void:
+	var veh = _gs.get("vehicles")
+	if veh == null:
+		return
+	var sv := veh as SimVehicles
+	for s in _shipments:
+		if String(s.get("status", "")) != "active":
+			continue
+		var vid := int(s.get("vehicle_id", -1))
+		var v: Dictionary = sv.vehicle_by_id(vid)
+		if v.is_empty():
+			# Wagon lost en route (monsters, disaster, save/load without
+			# the vehicle): the goods go down with it — no delivery,
+			# no boost, no crash.
+			s["status"] = "lost"
+			continue
+		var pos: Vector2 = v.get("pos", Vector2.ZERO)
+		var phase := String(s.get("phase", "outbound"))
+		if phase == "outbound":
+			var site: Vector2 = s.get("site_pos", Vector2.ZERO)
+			if pos.distance_to(site) <= AIDWAGON_DELIVER_RADIUS:
+				_deliver_shipment(sv, s)
+		elif phase == "return":
+			var home: Vector2 = s.get("home_pos", Vector2.ZERO)
+			if pos.distance_to(home) <= AIDWAGON_DELIVER_RADIUS:
+				sv.despawn_vehicle(vid)
+				s["status"] = "done"
+
+
+## The wagon reached the recipient: hand over the goods, warm relations,
+## tell the Gazette, and send the wagon home.
+func _deliver_shipment(sv: SimVehicles, s: Dictionary) -> void:
+	var me := String(s.get("from", ""))
+	var victim := String(s.get("to", ""))
+	var resource := String(s.get("resource", ""))
+	var sent := float(s.get("amount", 0.0))
+	var vid := int(s.get("vehicle_id", -1))
+	sv.park(vid)
+	_gs.resources.add_resource(victim, resource, sent)
+	_gs.diplomacy.adjust_score(victim, me, 8.0)
+	_gs.diplomacy.record_event(victim, me, "aid_given", me)
 	SimGazette.publish_or_emit(_gs,
-		"%s sends %s to the %s" % [_fname(me), resource, _fname(victim)],
-		"On day %d, %d %s changed hands from %s to %s — aid, freely given." % [
-			day, int(sent), resource, _fname(me), _fname(victim)],
+		"Relief wagon reaches the %s" % _fname(victim),
+		"On day %d, a relief wagon from the %s rolled into %s lands carrying %d %s, freely given. Kindness is never forgotten." % [
+			_gs.day_number, _fname(me), _fname(victim), int(sent), resource],
 		"court")
-	return {"ok": true, "sent": sent,
-		"msg": "Sent %d %s to the %s." % [int(sent), resource, _fname(victim)]}
+	sv.drive_to(vid, s.get("home_pos", Vector2.ZERO))
+	s["phase"] = "return"

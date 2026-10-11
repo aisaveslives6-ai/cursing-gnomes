@@ -56,6 +56,9 @@ func _build() -> void:
 	scroll.add_child(v)
 
 	_title = Label.new()
+	# Jeremy 2026-10-11 (menu scroll audit): display-only — never swallow
+	# the ScrollContainer's drag.
+	_title.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_title.text = "VICTORY"
 	_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_title.add_theme_font_size_override("font_size", 88)
@@ -66,6 +69,7 @@ func _build() -> void:
 	v.add_child(_title)
 
 	_msg = Label.new()
+	_msg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_msg.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_msg.add_theme_font_size_override("font_size", 28)
 	_msg.add_theme_color_override("font_color", Color(0.941, 0.902, 0.784))

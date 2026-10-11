@@ -284,6 +284,9 @@ func _rebuild_panel() -> void:
 			var nm := str(SimAdventure.SUPPLY_NAMES.get(sid, sid.capitalize()))
 			sup_lines.append("%s: %d" % [nm, n])
 	var sup_lbl := Label.new()
+	# Jeremy 2026-10-11 (menu scroll audit): display-only — never swallow
+	# the quest panel's ScrollContainer drag.
+	sup_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	sup_lbl.text = "\n".join(sup_lines) if not sup_lines.is_empty() \
 		else "Empty bag"
 	sup_lbl.add_theme_font_size_override("font_size", 22)
@@ -295,6 +298,7 @@ func _rebuild_panel() -> void:
 		_gear_name(String((_adv.gear as Dictionary).get("armor", ""))),
 		_gear_name(String((_adv.gear as Dictionary).get("trinket", "")))]
 	var gl := Label.new()
+	gl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	gl.text = gear_line
 	gl.add_theme_font_size_override("font_size", 22)
 	gl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -317,6 +321,7 @@ func _rebuild_panel() -> void:
 			" (owned)" if owned else ""]
 		if owned:
 			var l2 := Label.new()
+			l2.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			l2.text = "%s\n%s" % [String(it.get("name", "")), sub2]
 			l2.add_theme_font_size_override("font_size", 22)
 			_panel_box.add_child(l2)
@@ -329,6 +334,7 @@ func _rebuild_panel() -> void:
 	var deeds: Array = _adv.deeds
 	for i in range(maxi(0, deeds.size() - 8), deeds.size()):
 		var dl := Label.new()
+		dl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		dl.text = "• %s" % String(deeds[i])
 		dl.add_theme_font_size_override("font_size", 20)
 		dl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -337,6 +343,7 @@ func _rebuild_panel() -> void:
 
 func _section(text: String) -> void:
 	var l := Label.new()
+	l.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	l.text = text
 	l.add_theme_font_size_override("font_size", 28)
 	l.add_theme_color_override("font_color", Color(1.0, 0.85, 0.5))
@@ -346,15 +353,19 @@ func _section(text: String) -> void:
 func _quest_row(title: String, sub: String, btn_text: String,
 		on_press: Callable) -> void:
 	var hb := HBoxContainer.new()
+	hb.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	hb.add_theme_constant_override("separation", 8)
 	var vb := VBoxContainer.new()
+	vb.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	vb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	var t := Label.new()
+	t.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	t.text = title
 	t.add_theme_font_size_override("font_size", 24)
 	t.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	vb.add_child(t)
 	var s := Label.new()
+	s.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	s.text = sub
 	s.add_theme_font_size_override("font_size", 20)
 	s.add_theme_color_override("font_color", Color(0.75, 0.72, 0.62))

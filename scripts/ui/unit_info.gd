@@ -546,6 +546,7 @@ func _section(t: String) -> Label:
 
 func _divider() -> HSeparator:
 	var d := HSeparator.new()
+	d.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	d.add_theme_constant_override("separation", _si(6))
 	d.add_theme_stylebox_override("separator", _make_divider_style())
 	return d
@@ -561,6 +562,7 @@ func _make_divider_style() -> StyleBoxLine:
 ## Styled housing box: green "Has a house" / red "No house" (HTML parity).
 func _housing_box(town_name: String, town_id: int) -> PanelContainer:
 	var box := PanelContainer.new()
+	box.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var sb := StyleBoxFlat.new()
 	var has_house := town_name != "" or town_id >= 0
 	if has_house:
@@ -577,6 +579,7 @@ func _housing_box(town_name: String, town_id: int) -> PanelContainer:
 	sb.content_margin_bottom = _si(8)
 	box.add_theme_stylebox_override("panel", sb)
 	var vb := VBoxContainer.new()
+	vb.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	vb.add_theme_constant_override("separation", _si(2))
 	box.add_child(vb)
 	if has_house:
@@ -651,6 +654,9 @@ func _memory_lines(u: Dictionary) -> Array[String]:
 
 func _line(t: String, size: int, color: Color, bold := false) -> Label:
 	var l := Label.new()
+	# Jeremy 2026-10-11 (menu scroll audit): display-only — never swallow
+	# the ScrollContainer's drag. (Covers _section too.)
+	l.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	l.text = t
 	l.add_theme_font_size_override("font_size", size)
 	l.add_theme_color_override("font_color", color)
@@ -664,12 +670,14 @@ func _line(t: String, size: int, color: Color, bold := false) -> Label:
 
 func _bar(key: String, label_text: String, val: float, color: Color) -> HBoxContainer:
 	var row := HBoxContainer.new()
+	row.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	row.add_theme_constant_override("separation", _si(8))
 	var l := _line(label_text, _si(22), TEXT_DIM)
 	l.custom_minimum_size = Vector2(_si(90), 0)
 	row.add_child(l)
 	# Bordered bar background.
 	var bg := PanelContainer.new()
+	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var bgsb := StyleBoxFlat.new()
 	bgsb.bg_color = Color(0.10, 0.10, 0.10, 1.0)
 	bgsb.set_border_width_all(_si(1))
@@ -680,6 +688,7 @@ func _bar(key: String, label_text: String, val: float, color: Color) -> HBoxCont
 	bg.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_child(bg)
 	var fill := ColorRect.new()
+	fill.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	fill.color = color
 	fill.set_anchors_preset(Control.PRESET_FULL_RECT)
 	fill.anchor_right = clampf(val / 100.0, 0.0, 1.0)

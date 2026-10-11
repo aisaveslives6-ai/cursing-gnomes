@@ -1188,14 +1188,19 @@ func _panel_button(text: String, on_press: Callable) -> Button:
 ## just leaves an empty slot, the label still shows. Returns [row, label].
 func _res_icon_row(res: String, font_size: int) -> Array:
 	var row := HBoxContainer.new()
+	# Jeremy 2026-10-11 (menu scroll audit): drag-transparent so the
+	# ScrollContainer owns the gesture in the drawer + side panel.
+	row.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	row.add_theme_constant_override("separation", _s(12))
 	var icon := TextureRect.new()
+	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	icon.texture = Art.resource_icon(res)
 	icon.custom_minimum_size = Vector2(_s(44), _s(44))
 	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	row.add_child(icon)
 	var l := Label.new()
+	l.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	l.add_theme_font_size_override("font_size", font_size)
 	l.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	row.add_child(l)
@@ -1423,8 +1428,12 @@ func _build_drawer() -> void:
 	margin.add_theme_constant_override("margin_top", 12)
 	margin.add_theme_constant_override("margin_bottom", 12)
 	margin.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	# Jeremy 2026-10-11 (menu scroll audit): drag-transparent containers
+	# so the drawer ScrollContainer owns the gesture everywhere.
+	margin.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	scroll.add_child(margin)
 	_drawer_vbox = VBoxContainer.new()
+	_drawer_vbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_drawer_vbox.add_theme_constant_override("separation", 10)
 	_drawer_vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	margin.add_child(_drawer_vbox)
@@ -1505,6 +1514,7 @@ func _build_system_menu() -> void:
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	vbox.add_child(scroll)
 	var list := VBoxContainer.new()
+	list.mouse_filter = Control.MOUSE_FILTER_IGNORE # 2026-10-11 scroll audit (menu buttons keep STOP)
 	list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	list.add_theme_constant_override("separation", _s(12))
 	list.alignment = BoxContainer.ALIGNMENT_CENTER
@@ -2283,22 +2293,17 @@ func _power_message_leader(faction: String) -> void:
 
 ## Ask a foreign faction for aid. Warm friends share; cold ones decline.
 func _power_request_aid(faction: String) -> void:
-	var me := String(game.player_faction)
-	var score: float = game.diplomacy.relation_score(faction, me)
-	if score >= 30.0:
-		var paid: float = game.diplomacy.pay_tribute(
-			faction, me, "food", 100.0)
-		if paid > 0.0:
-			game.diplomacy.record_event(me, faction, "aid_given", faction)
-			flash_hint("The %s sent %d food in aid." % [
-				_power_faction_name(faction), int(paid)])
-		else:
-			flash_hint("The %s wish they could help — their stores are empty." % \
-				_power_faction_name(faction))
-	else:
-		game.diplomacy.adjust_score(me, faction, -2.0)
-		flash_hint("The %s decline — relations too cold." % \
-			_power_faction_name(faction))
+	# Inbound aid: when the donor agrees, a real relief wagon rolls out of
+	# THEIR hall to ours (Jeremy 2026-10-11: "Aid missions visibly travel,
+	# deliver, return" — both directions). Delivery, credit, and the
+	# relations boost all happen on arrival; declines/empty stores are
+	# handled inside the request.
+	if game.disaster_aid == null:
+		flash_hint("Aid system not ready.")
+		_close_power_menu()
+		return
+	var r: Dictionary = game.disaster_aid.request_inbound_aid(faction)
+	flash_hint(String(r.get("msg", "")))
 	_close_power_menu()
 
 
@@ -2433,9 +2438,11 @@ func _rebuild_drawer() -> void:
 	var has_game := game != null
 	# Header
 	var head := HBoxContainer.new()
+	head.mouse_filter = Control.MOUSE_FILTER_IGNORE # 2026-10-11 scroll audit (close Button keeps STOP)
 	head.add_theme_constant_override("separation", 8)
 	_drawer_vbox.add_child(head)
 	var title := Label.new()
+	title.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	title.text = "REALM"
 	title.add_theme_font_size_override("font_size", _si(32))
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -2479,18 +2486,21 @@ func _rebuild_drawer() -> void:
 	# Peoples (live per-faction population)
 	_drawer_section("PEOPLES")
 	_pop_drawer_label = Label.new()
+	_pop_drawer_label.mouse_filter = Control.MOUSE_FILTER_IGNORE # 2026-10-11 scroll audit
 	_pop_drawer_label.add_theme_font_size_override("font_size", _si(24))
 	_drawer_vbox.add_child(_pop_drawer_label)
 
 	# Leadership
 	_drawer_section("LEADERSHIP")
 	_peace_drawer_label = Label.new()
+	_peace_drawer_label.mouse_filter = Control.MOUSE_FILTER_IGNORE # 2026-10-11 scroll audit
 	_peace_drawer_label.add_theme_font_size_override("font_size", _si(24))
 	_drawer_vbox.add_child(_peace_drawer_label)
 
 	# World
 	_drawer_section("WORLD")
 	_weather_drawer_label = Label.new()
+	_weather_drawer_label.mouse_filter = Control.MOUSE_FILTER_IGNORE # 2026-10-11 scroll audit
 	_weather_drawer_label.add_theme_font_size_override("font_size", _si(24))
 	_drawer_vbox.add_child(_weather_drawer_label)
 	# Jeremy 2026-10-04: HTML parity — the HTML build has a floating
@@ -2529,6 +2539,7 @@ func _rebuild_drawer() -> void:
 
 func _drawer_section(text: String) -> void:
 	var l := Label.new()
+	l.mouse_filter = Control.MOUSE_FILTER_IGNORE # 2026-10-11 scroll audit
 	l.text = text
 	l.add_theme_font_size_override("font_size", _si(28))
 	# Readability polish 2026-10-04: section headers get the same gold title
