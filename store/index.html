@@ -86,6 +86,8 @@
   .faq { font-size:14px; color:#c6cde9; line-height:1.65; }
   .faq b { color:#fff; }
   .faq p { margin-bottom:12px; }
+  .done-check { display:inline-block; margin-top:8px; font-size:13px; color:#7ee2a8; cursor:pointer; }
+  .done-check input { width:18px; height:18px; accent-color:#3ddc84; vertical-align:-4px; margin-right:6px; }
   footer { text-align:center; color:#5d668f; font-size:12px; margin-top:26px; padding:0 20px; line-height:1.7; }
   footer .motto { color:#7ee2a8; font-weight:700; }
   .hidden { display:none !important; }
@@ -109,11 +111,15 @@
       <div class="choice" id="choiceNone" onclick="setInstaller(null)">Not yet</div>
     </div>
     <div id="setupGuide" class="hidden">
-      <ol class="steps">
-        <li>On your iPhone open <b>frizzlem.github.io/SideInstaller</b> in Safari, install the DNS profile, pick a certificate and install SideInstaller. If one certificate is dead, try the next.</li>
-        <li>Trust it under <b>Settings &rarr; General &rarr; VPN &amp; Device Management</b>, open it, and sign in with your <b>Apple&nbsp;ID inside the app</b> — never type your password into a website.</li>
-        <li>Tap <b>Install SideStore</b>, then come back here and pick <b>SideStore</b> above. You can delete the DNS profile afterwards.</li>
+      <p class="sub" style="margin-top:10px">Apple makes you do these 5 taps yourself, in your Settings — no app or website can do them for you. It's about 5 minutes, once. Tick each off as you go:</p>
+      <ol class="steps" id="setupSteps">
+        <li data-step="0">Open <b>SideInstaller</b> and install the DNS profile.<br><a href="https://frizzlem.github.io/SideInstaller/">Open SideInstaller &rarr;</a><br><label class="done-check"><input type="checkbox" onchange="tickStep(0,this.checked)"> Done</label></li>
+        <li data-step="1">Pick a certificate on that page and install SideInstaller. (If one certificate is dead, try the next.)<br><label class="done-check"><input type="checkbox" onchange="tickStep(1,this.checked)"> Done</label></li>
+        <li data-step="2">Trust it: <b>Settings &rarr; General &rarr; VPN &amp; Device Management</b>, tap the profile, tap <b>Trust</b>.<br><label class="done-check"><input type="checkbox" onchange="tickStep(2,this.checked)"> Done</label></li>
+        <li data-step="3">Open SideInstaller, connect the VPN as it shows you, and sign in with your <b>Apple&nbsp;ID inside the app</b> — never type your password into a website.<br><label class="done-check"><input type="checkbox" onchange="tickStep(3,this.checked)"> Done</label></li>
+        <li data-step="4">Tap <b>Install SideStore</b> inside SideInstaller. You can delete the DNS profile afterwards.<br><label class="done-check"><input type="checkbox" onchange="tickStep(4,this.checked)"> Done</label></li>
       </ol>
+      <p class="sub hidden" id="setupDone" style="color:#7ee2a8;font-weight:700;margin-top:6px;">You're set — SideStore is ready. Hit GET on the game below. 🎮</p>
     </div>
   </div>
 
@@ -204,6 +210,28 @@ function renderInstaller() {
   var hint = document.getElementById("getHint");
   if (cur === "altstore") hint.innerHTML = "Tap <b>Get</b> — the store hands the game straight to <b>AltStore</b>, which signs it with your Apple&nbsp;ID and installs it. One tap.";
   else hint.innerHTML = "Tap <b>Get</b> — the store hands the game straight to <b>SideStore</b>, which signs it with your Apple&nbsp;ID and installs it. One tap.";
+  renderSteps();
+}
+
+function getSteps() {
+  try { return JSON.parse(localStorage.getItem("eg_setup_steps") || "[false,false,false,false,false]"); }
+  catch (e) { return [false,false,false,false,false]; }
+}
+
+function renderSteps() {
+  var steps = getSteps();
+  var boxes = document.querySelectorAll("#setupSteps input[type=checkbox]");
+  for (var i = 0; i < boxes.length && i < steps.length; i++) boxes[i].checked = !!steps[i];
+  var done = steps.every(Boolean);
+  document.getElementById("setupDone").classList.toggle("hidden", !done);
+  if (done && !localStorage.getItem("eg_installer")) setInstaller("sidestore");
+}
+
+function tickStep(i, val) {
+  var steps = getSteps();
+  steps[i] = !!val;
+  localStorage.setItem("eg_setup_steps", JSON.stringify(steps));
+  renderSteps();
 }
 
 function installApp(e) {
