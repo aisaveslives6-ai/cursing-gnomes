@@ -104,10 +104,9 @@
   <!-- INSTALLER STATUS -->
   <div class="card" id="installerCard">
     <h2>Step 1 — Your installer</h2>
-    <p class="sub">The store installs through SideStore or AltStore, which sign apps with your Apple&nbsp;ID right on your phone. Which one do you have?</p>
+    <p class="sub">The store installs through SideStore, which signs apps with your Apple&nbsp;ID right on your phone. Got it installed?</p>
     <div class="choice-row">
-      <div class="choice" id="choiceSide" onclick="setInstaller('sidestore')">SideStore</div>
-      <div class="choice" id="choiceAlt" onclick="setInstaller('altstore')">AltStore</div>
+      <div class="choice" id="choiceSide" onclick="setInstaller('sidestore')">Yes, SideStore</div>
       <div class="choice" id="choiceNone" onclick="setInstaller(null)">Not yet</div>
     </div>
     <div id="setupGuide" class="hidden">
@@ -159,7 +158,6 @@
     <p class="sub">Add our source once and every Ethos Games app appears inside your installer with automatic update notices — like a real App Store feed.</p>
     <div class="btn-row">
       <a class="btn btn-green" href="#" onclick="addSource(event,'sidestore')">Add to SideStore</a>
-      <a class="btn btn-ghost" href="#" onclick="addSource(event,'altstore')">AltStore</a>
     </div>
     <p class="hint">Activates once the store is hosted at its permanent link.</p>
   </div>
@@ -186,7 +184,7 @@
 
   <h3 class="section">Good to know</h3>
   <div class="card faq">
-    <p><b>What does the store automate?</b><br>One-tap installs, the source feed with update notices, and the 7-day expiry countdown with a refresh button. The signing itself happens inside SideStore/AltStore with your Apple&nbsp;ID — Apple gives no other way on a stock iPhone.</p>
+    <p><b>What does the store automate?</b><br>One-tap installs, the source feed with update notices, and the 7-day expiry countdown with a refresh button. The signing itself happens inside SideStore with your Apple&nbsp;ID — Apple gives no other way on a stock iPhone.</p>
     <p><b>Why does it expire every 7 days?</b><br>Apple&rsquo;s rule for free Apple&nbsp;IDs, not ours. Your installer re-signs apps on its own — saves are never touched.</p>
     <p><b>Is this safe?</b><br>Every app is signed on <i>your</i> phone with <i>your</i> Apple&nbsp;ID. Nothing here can see your password, and the game is fully offline.</p>
     <p><b>Want it to never expire?</b><br>Apple&rsquo;s $99/year Developer Program signs apps for a full year. Same store, same games.</p>
@@ -214,12 +212,9 @@ function setInstaller(which) {
 function renderInstaller() {
   var cur = localStorage.getItem("eg_installer");
   document.getElementById("choiceSide").classList.toggle("active", cur === "sidestore");
-  document.getElementById("choiceAlt").classList.toggle("active", cur === "altstore");
   document.getElementById("choiceNone").classList.toggle("active", !cur);
   document.getElementById("setupGuide").classList.toggle("hidden", !!cur);
-  var hint = document.getElementById("getHint");
-  if (cur === "altstore") hint.innerHTML = "Tap <b>Get</b> — the store hands the game straight to <b>AltStore</b>, which signs it with your Apple&nbsp;ID and installs it. One tap.";
-  else hint.innerHTML = "Tap <b>Get</b> — the store hands the game straight to <b>SideStore</b>, which signs it with your Apple&nbsp;ID and installs it. One tap.";
+  document.getElementById("getHint").innerHTML = "Tap <b>Get</b> — the store hands the game straight to <b>SideStore</b>, which signs it with your Apple&nbsp;ID and installs it. One tap.";
   renderSteps();
 }
 
