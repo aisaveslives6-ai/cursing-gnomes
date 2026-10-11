@@ -92,12 +92,88 @@
   footer .motto { color:#7ee2a8; font-weight:700; }
   .hidden { display:none !important; }
 </style>
+<style>
+/* ===== Ethos glow-up: animated light, rays, shimmer ===== */
+@media (prefers-reduced-motion: no-preference) {
+  body::before, body::after {
+    content:""; position:fixed; width:60vmax; height:60vmax; border-radius:50%;
+    filter:blur(90px); opacity:.35; pointer-events:none; z-index:0;
+  }
+  body::before { background:radial-gradient(circle,#2b3f8f,transparent 70%); top:-20vmax; left:-15vmax; animation:drift1 18s ease-in-out infinite alternate; }
+  body::after { background:radial-gradient(circle,#0f5f3f,transparent 70%); bottom:-25vmax; right:-15vmax; animation:drift2 22s ease-in-out infinite alternate; }
+  @keyframes drift1 { to { transform:translate(9vmax,7vmax) scale(1.15); } }
+  @keyframes drift2 { to { transform:translate(-8vmax,-6vmax) scale(1.1); } }
+  main, header { position:relative; z-index:1; }
+
+  main > * { animation:card-in .8s cubic-bezier(.2,.8,.25,1) both; }
+  main > *:nth-child(2) { animation-delay:.07s; }
+  main > *:nth-child(3) { animation-delay:.14s; }
+  main > *:nth-child(4) { animation-delay:.21s; }
+  main > *:nth-child(5) { animation-delay:.28s; }
+  main > *:nth-child(6) { animation-delay:.35s; }
+  main > *:nth-child(7) { animation-delay:.42s; }
+  main > *:nth-child(8) { animation-delay:.49s; }
+  @keyframes card-in { from { opacity:0; transform:translateY(28px) scale(.985); } }
+
+  header h1 .accent {
+    background:linear-gradient(100deg,#7ee2a8 20%,#fff3c4 40%,#7ee2a8 60%);
+    background-size:220% auto; -webkit-background-clip:text; background-clip:text; color:transparent;
+    animation:shine 5s linear infinite;
+    filter:drop-shadow(0 0 14px rgba(126,226,168,.45));
+  }
+  @keyframes shine { to { background-position:220% center; } }
+
+  .cta-rays { position:relative; display:inline-block; isolation:isolate; }
+  .cta-rays::before {
+    content:""; position:absolute; inset:-58px; z-index:-1; pointer-events:none;
+    background:repeating-conic-gradient(from 0deg, rgba(255,222,140,.5) 0deg 7deg, transparent 7deg 16deg);
+    -webkit-mask-image:radial-gradient(circle, #000 0%, transparent 62%);
+    mask-image:radial-gradient(circle, #000 0%, transparent 62%);
+    animation:rays-spin 16s linear infinite;
+  }
+  @keyframes rays-spin { to { transform:rotate(360deg); } }
+
+  #getBtn { animation:btn-breathe 2.8s ease-in-out infinite; position:relative; }
+  @keyframes btn-breathe {
+    0%,100% { box-shadow:0 0 16px rgba(61,220,132,.5), 0 0 44px rgba(61,220,132,.20); transform:scale(1); }
+    50% { box-shadow:0 0 30px rgba(61,220,132,.9), 0 0 90px rgba(61,220,132,.40); transform:scale(1.045); }
+  }
+
+  #choiceSide:not(.active) { animation:choice-glow 2.8s ease-in-out infinite; border-color:#3ddc84; }
+  @keyframes choice-glow {
+    0%,100% { box-shadow:0 0 6px rgba(61,220,132,.25); }
+    50% { box-shadow:0 0 20px rgba(61,220,132,.65); }
+  }
+
+  h3.section { text-shadow:0 0 12px rgba(143,155,216,.6); }
+
+  .sparkle { position:absolute; width:6px; height:6px; border-radius:50%;
+    background:radial-gradient(circle,#fff8dc 0%, rgba(255,240,180,0) 70%);
+    animation:sparkle-float 7s ease-in-out infinite; pointer-events:none; }
+  @keyframes sparkle-float {
+    0%,100% { transform:translateY(0) scale(.7); opacity:.25; }
+    50% { transform:translateY(-26px) scale(1.15); opacity:.95; }
+  }
+}
+.sparkles { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+header { position:relative; overflow:hidden; }
+</style>
 </head>
 <body>
 <header>
   <div class="brand">Ethos Games presents</div>
   <h1>Sideload <span class="accent">Store</span></h1>
   <p>Our own little App Store. One tap installs — the store handles the rest.</p>
+  <div class="sparkles" aria-hidden="true">
+    <span class="sparkle" style="left:12%;top:30%;animation-delay:0s"></span>
+    <span class="sparkle" style="left:26%;top:65%;animation-delay:1.2s"></span>
+    <span class="sparkle" style="left:44%;top:22%;animation-delay:2.1s"></span>
+    <span class="sparkle" style="left:61%;top:58%;animation-delay:.6s"></span>
+    <span class="sparkle" style="left:74%;top:30%;animation-delay:1.8s"></span>
+    <span class="sparkle" style="left:88%;top:66%;animation-delay:2.7s"></span>
+    <span class="sparkle" style="left:35%;top:80%;animation-delay:3.3s"></span>
+    <span class="sparkle" style="left:55%;top:12%;animation-delay:4s"></span>
+  </div>
 </header>
 <main>
 
@@ -137,7 +213,7 @@
       <span class="tag">Strategy</span><span class="tag">Offline</span><span class="tag">No ads</span><span class="tag">No microtransactions</span>
     </div>
     <div class="btn-row">
-      <a class="btn btn-green" id="getBtn" href="#" onclick="installApp(event)">Get</a>
+      <span class="cta-rays"><a class="btn btn-green" id="getBtn" href="#" onclick="installApp(event)">Get</a></span>
       <a class="btn btn-ghost" href="https://github.com/aisaveslives6-ai/cursing-gnomes/releases/download/latest/CursingGnomes.ipa" download>Download IPA</a>
     </div>
     <p class="hint" id="getHint">Tap <b>Get</b> — the store hands the game straight to your installer, which signs it with your Apple&nbsp;ID and installs it. One tap.</p>
