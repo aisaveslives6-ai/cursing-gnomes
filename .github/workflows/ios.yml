@@ -65,7 +65,19 @@ jobs:
           GODOT="$HOME/godot-app/Godot.app/Contents/MacOS/Godot"
           "$GODOT" --headless --path . --import
           mkdir -p build/ios
-          "$GODOT" --headless --path . --export-release "iOS" "$PWD/build/ios/${APP_NAME}"
+          # Belt and braces: the preset sets xcode/xcode_build=false so Godot
+          # must NOT run its own `xcodebuild archive` here (it can never sign
+          # on a CI runner). If a future Godot ignores that option, tolerate
+          # the expected signing failure as long as the .xcodeproj was
+          # generated — our own "Build unsigned .app" step compiles it with
+          # signing disabled.
+          if ! "$GODOT" --headless --path . --export-release "iOS" "$PWD/build/ios/${APP_NAME}"; then
+            echo "NOTE: Godot export exited non-zero (its internal xcodebuild cannot sign on CI); checking generated project..."
+          fi
+          PROJ="build/ios/${APP_NAME}.xcodeproj"
+          if [ ! -d "$PROJ" ]; then
+            echo "FATAL: Godot did not generate $PROJ"; exit 1
+          fi
           echo "--- exported files ---"
           find build/ios -maxdepth 2 | head -40
 
