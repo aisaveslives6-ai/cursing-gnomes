@@ -138,6 +138,15 @@
     <p class="hint" id="getHint">Tap <b>Get</b> — the store hands the game straight to your installer, which signs it with your Apple&nbsp;ID and installs it. One tap.</p>
   </div>
 
+  <!-- AUTO-UPDATE PROMPT (appears after install) -->
+  <div class="card hidden" id="sourcePrompt">
+    <h2>Keep Cursing Gnomes up to date?</h2>
+    <p class="sub">One more tap adds the Ethos Games feed to your installer — every new version then shows up as an update, automatically.</p>
+    <div class="btn-row">
+      <a class="btn btn-green" href="#" onclick="addSource(event,getInstaller())">Enable auto-updates</a>
+    </div>
+  </div>
+
   <!-- SOURCE -->
   <div class="card">
     <h2>Ethos Games source</h2>
@@ -201,12 +210,16 @@ function installApp(e) {
   e.preventDefault();
   var inst = getInstaller();
   localStorage.setItem("eg_installed_at", Date.now().toString());
+  localStorage.setItem("eg_pending_source", "1");
   renderExpiry();
   window.location.href = inst + "://install?url=" + encodeURIComponent(IPA_URL);
 }
 
 function addSource(e, inst) {
   e.preventDefault();
+  localStorage.setItem("eg_source_added", "1");
+  localStorage.removeItem("eg_pending_source");
+  document.getElementById("sourcePrompt").classList.add("hidden");
   window.location.href = inst + "://source?url=" + encodeURIComponent(SOURCE_URL);
 }
 
@@ -241,6 +254,13 @@ function renderExpiry() {
 
 renderInstaller();
 renderExpiry();
+
+// When the user comes back after installing, offer the auto-update feed.
+window.addEventListener("pageshow", function() {
+  if (localStorage.getItem("eg_pending_source") && !localStorage.getItem("eg_source_added")) {
+    document.getElementById("sourcePrompt").classList.remove("hidden");
+  }
+});
 </script>
 </body>
 </html>
