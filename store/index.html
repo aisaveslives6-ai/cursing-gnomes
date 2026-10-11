@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0b0e1a">
+<title>Ethos Games — Sideload Store</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  :root { color-scheme:dark; }
+  body {
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;
+    background:#0b0e1a; color:#f2f4fa;
+    padding-bottom:calc(40px + env(safe-area-inset-bottom));
+  }
+  header {
+    padding:calc(28px + env(safe-area-inset-top)) 20px 18px;
+    background:linear-gradient(160deg,#141a35 0%,#0b0e1a 70%);
+    border-bottom:1px solid #1e2547;
+  }
+  header .brand { font-size:13px; letter-spacing:3px; color:#8f9bd8; text-transform:uppercase; }
+  header h1 { font-size:30px; font-weight:800; margin-top:6px; }
+  header h1 .accent { color:#7ee2a8; }
+  header p { color:#9aa3c7; font-size:14px; margin-top:6px; }
+  main { padding:18px 16px 0; max-width:560px; margin:0 auto; }
+  .card {
+    background:#151b36; border:1px solid #232c5e; border-radius:20px;
+    padding:18px; margin-bottom:16px;
+    box-shadow:0 8px 28px rgba(0,0,0,.45);
+  }
+  .card h2 { font-size:17px; margin-bottom:8px; }
+  .card p.sub { font-size:13px; color:#9aa3c7; line-height:1.55; }
+  .app-row { display:flex; gap:14px; align-items:center; }
+  .app-icon {
+    width:76px; height:76px; border-radius:18px; flex-shrink:0;
+    background:#232c5e; box-shadow:0 4px 14px rgba(0,0,0,.5);
+  }
+  .app-meta { flex:1; min-width:0; }
+  .app-meta h2 { font-size:19px; font-weight:700; margin-bottom:0; }
+  .app-meta .dev { color:#8f9bd8; font-size:13px; margin-top:2px; }
+  .app-meta .ver { color:#6b7499; font-size:12px; margin-top:4px; }
+  .btn {
+    display:inline-block; margin-top:12px; padding:11px 30px; border-radius:999px;
+    font-weight:800; font-size:16px; text-decoration:none; border:none; cursor:pointer;
+  }
+  .btn-green {
+    background:linear-gradient(180deg,#3ddc84,#22b45e); color:#04120a;
+    box-shadow:0 4px 16px rgba(61,220,132,.35);
+  }
+  .btn-ghost {
+    background:#232c5e; color:#dfe4fa; font-size:14px; padding:9px 20px; margin-left:8px;
+  }
+  .btn:active { transform:scale(.96); }
+  .btn-row { display:flex; align-items:center; flex-wrap:wrap; }
+  .hint { font-size:12px; color:#9aa3c7; margin-top:10px; line-height:1.5; }
+  .desc { font-size:14px; color:#c6cde9; line-height:1.6; margin-top:12px; }
+  .tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+  .tag { font-size:11px; background:#232c5e; color:#aeb8e8; padding:5px 11px; border-radius:999px; }
+  h3.section { font-size:15px; text-transform:uppercase; letter-spacing:1.5px; color:#8f9bd8; margin:22px 4px 10px; }
+  .choice-row { display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; }
+  .choice {
+    flex:1; min-width:130px; text-align:center; padding:13px 10px; border-radius:14px;
+    background:#1b2247; border:2px solid #2b3670; color:#dfe4fa;
+    font-size:14px; font-weight:700; cursor:pointer;
+  }
+  .choice.active { border-color:#3ddc84; background:#1c2f3a; }
+  .choice:active { transform:scale(.97); }
+  ol.steps { list-style:none; counter-reset:step; margin-top:12px; }
+  ol.steps li {
+    counter-increment:step; position:relative; padding:12px 12px 12px 52px;
+    background:#10152e; border:1px solid #232c5e; border-radius:14px; margin-bottom:10px;
+    font-size:14px; line-height:1.55; color:#dfe4fa;
+  }
+  ol.steps li::before {
+    content:counter(step); position:absolute; left:14px; top:12px;
+    width:26px; height:26px; border-radius:50%; background:#2b3670; color:#fff;
+    font-size:14px; font-weight:700; display:flex; align-items:center; justify-content:center;
+  }
+  ol.steps li b, ol.steps li a { color:#7ee2a8; }
+  .expiry-ok { color:#7ee2a8; font-weight:700; }
+  .expiry-warn { color:#ffcf5c; font-weight:700; }
+  .expiry-bad { color:#ff7a7a; font-weight:700; }
+  .faq { font-size:14px; color:#c6cde9; line-height:1.65; }
+  .faq b { color:#fff; }
+  .faq p { margin-bottom:12px; }
+  footer { text-align:center; color:#5d668f; font-size:12px; margin-top:26px; padding:0 20px; line-height:1.7; }
+  footer .motto { color:#7ee2a8; font-weight:700; }
+  .hidden { display:none !important; }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">Ethos Games presents</div>
+  <h1>Sideload <span class="accent">Store</span></h1>
+  <p>Our own little App Store. One tap installs — the store handles the rest.</p>
+</header>
+<main>
+
+  <!-- INSTALLER STATUS -->
+  <div class="card" id="installerCard">
+    <h2>Step 1 — Your installer</h2>
+    <p class="sub">The store installs through SideStore or AltStore, which sign apps with your Apple&nbsp;ID right on your phone. Which one do you have?</p>
+    <div class="choice-row">
+      <div class="choice" id="choiceSide" onclick="setInstaller('sidestore')">SideStore</div>
+      <div class="choice" id="choiceAlt" onclick="setInstaller('altstore')">AltStore</div>
+      <div class="choice" id="choiceNone" onclick="setInstaller(null)">Not yet</div>
+    </div>
+    <div id="setupGuide" class="hidden">
+      <ol class="steps">
+        <li>On your iPhone open <b>frizzlem.github.io/SideInstaller</b> in Safari, install the DNS profile, pick a certificate and install SideInstaller. If one certificate is dead, try the next.</li>
+        <li>Trust it under <b>Settings &rarr; General &rarr; VPN &amp; Device Management</b>, open it, and sign in with your <b>Apple&nbsp;ID inside the app</b> — never type your password into a website.</li>
+        <li>Tap <b>Install SideStore</b>, then come back here and pick <b>SideStore</b> above. You can delete the DNS profile afterwards.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- APP CARD -->
+  <div class="card">
+    <div class="app-row">
+      <img class="app-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAAAXNSR0IArs4c6QAAEAVJREFUeJztnXtwXNV9xz+/c/chrSRLWsu2JBMbwsPEdkgAO4AhNhDxdA329IWhA7iYlJJOQ3kl02QIlPwRCqRpmmlpU+pAqelkpsEEiAk2L9sYjx88AiZgbGxskPyUbD2sXe3e++sfq9Vb0e5qH/eu9zPjsfbuuef+dn/fe+4533vuWWEEGmrLBr1W9QEgohDr6n8jEAIV1HEqgCvEyEUojYg0AI1Ag4hUjHSMEqmhql1AC9CMagtCM46uB17CmC5xNFHQMn37OGoDYNBBdTW3RYbVL0M3TKotwzcsiP4tA0RQRyB0LSqLgSYRKaNE3lDVCLBGHF0FPItljkB/8mG4AOIiHGztHrRtkACmVIdwjAMwqghEtAq4C7i7dHa7A1XtFJFHgEcdtTth5OQDGEfYf/R433Yr+ceU6hAAooKK4gBmUBXGD9wmor8SMQtFJJCLD1MifXpzcbGqcwvQBbwr4CTfH5h8gMoyP52RWGJfSDT7xhmc7iEtwTSwnhWRr+byg5TIDo7qWwZ7MbBvaPL7yhjlYGs30lBbRrx34ygimOfDPCNiJuc88jwwsa6O62+6hfmXNvGFadMB2Lf3U15/eQ0rn3ic1iNHChxhdlB1Dtiii4FNIyUfIA4JASRfwDAR3GyM/HuxNPdXLlzE/T96lFDFyF2Xrs5O7vvOXaxZ/XyeI8sNqtqjqrcCTya3DUw+gFVVnmjkDYmLhooiKgA3W5ZZISIWRcCVCxfxj//yGP7A6FoOBAJcsXARO3fs4JOdO/IYXW4QEUtElqjqbuDdocmHAS1Akt435/mwXi2WM39iXR0vvLpx1DN/KF0dHVx9yYW0tRbL5UB7bHEWAJviQ94zqr5B43wfTEtc84sj+QDX33RLyskHqKiqYumNy3IYUX4RkYClsioOJyW3BTTxr++CnxCB5U/09oujw5dk/qVNae+zoOmyHERSOETMlKCaVUE1vsAAi8CI9L9SlVuLcaiX7O2nw7RpJ2c/kAIjIucqzi19G1QSLYCIIuJUiTg/KFh0bkN17DIeRDD3C6YC7fUH+m/uyF3F1vQn2bf307T32bt3T/YDcQEiUq+qdyZfJ/oAsa464O5CBZVrXn95Tdr7vLY2/X28gojcKyJhVTAEQhAIXVvMN3ZWPvE4XZ2dKZfv7Gjn6SdX5DCiwiIilY6j1wAYVOi9pVu0tB45wn3fuSvl8t+/506OtrXmMKLCI0YWi0l0AiuA9MdJHmPN6ue561t/RfQPtATRzg7uuG05r7y0Oo+RFQaBywVCVmXQt8gYc0OhA8oH0b27OXfTqxCLYUIVmLJyiPUQ2bubttW/Zt9D9/P05s102M7YlXkcEfGjzhZpqA39WMT8XaEDyjWiyn3T65lR/ocnLn3UHeEfPt2PyrDJUkWHOvqIQWksdCD5oKmmaszkA8woL+MbNVV5iKjwqGij6Z3AWdSEfYbrJtWkXH7ppBrCPjN2QY8jmEYDxd8C3Dw5TLmV+l3tcsvi5snhHEbkFrTRAEXdAsytLGdOVfoWx5yqCuZUlucgIlcx1RSzARQSGdeZvGxymFARdwZFpKKoL3TXTa6h1j90gnvq1Pp9afUdvEjRCmBGWZCmmgnjrqepdgJnlAWzEJE7KUoB+IFb67PXiftmfRh/1mpzF0UpgGvCE2gMZm9GW2MwwDUTq7NWn5soOgFMDfi5dmL2r9vXhquZGii+dqCoBCCqLK8P4zPZ77n7jLC8PowU2UyhohJAqnZvphSjTVw0AkjX7s2UYrOJi+aTpGv3Zkqx2cRFIYBM7d5MKSab2PMCGK/dmynFYhN7XgDjtXszpVhsYk8LIFt2b6YUg03sWQFk2+7NFK/bxJ4VQLbt3kzxuk3sSQHkyu7NFC/bxJ4TQC7t3kzxsk3sOQHk2u7NFK/axJ4SQL7s3kzxok3sqWjzZfdmihdtYs8IIN92b6Z4zSb2hAAKZfdmipdsYk8IoFB2b6Z4ySZ2vQAKbfdmildsYlcLwC12b6Z4wSZ2tQDcYvdmihdsYtcKwG12b6a43SZ2Zc8qu3avUl4/gcpTJxOaWoOvIoivMtj7f6J1iXf2EO+KEu+MEu+KcvyzNjp2HSJyoJ0RflUnLZI2sVsXnZDGcKXrDOzLqitZVj8x4/3FEmpmT6V6ZgNVp03CV5mZdRzviNCx6xDHft/C0d99jjqZf1X/tf8Ia4+lvlJZvnCdAMI+w8MnN2bk+PnK/Ew87xQmXXQq/gnZNWNix45zaMMuDm/ejR0Zuub22HTbNvfsaaY17q71h1wngDsb69J2/IzPUP+NM6mbdxpWWW6vanY0xqENO9n/yodoPL2vbmtHFz9uPpyjyDLDdQJIly+dUseP7riKM6bX5fW4H+05zHd/spoP97groeniWQGIwK1//DX+5rrz8fsKc4MoFrf56co3efyZLZ5dW9qqKg/cX+gg0kUEHrz9Mv5yyRwsU7iRrGUM874yjckTK3lt6ycFi2M8eE4AIvDA7U38yWVfLnQofcw6dQp1tRW8vm13oUNJG48JQLn/r5v4s8vPKnQgw5h92hRqJ4RYt+0Txusd5BPXOoEjsWjBl/jzK9yX/CTXX/0Vrv76jEKHkRaeEcDEmnL+fvnFhQ5jTL6//BJqs+xB5BLPCOB7yy+lpsr9X2xtdYjveUCoSVx5L2AoZ89o4KqLzkipbPOhdh5esY6tH3wOwNxZU7ln2Xwa6tKbUzCeehbOP5P/fuFt3v1of1rHLASeEMCSplkplWs+1M6Sbz9F+/Fo37bVb3zMG+/sZdU//0XKIshGPUsumekJAbj+ElAWsLjywtTO/odXrBuUtCTtXVEe+cX6lI+ZjXqu+voMgn73zmBO4noBXHreqVSFUptalWyuR2Lz+5+lfMxs1DOhooxLv/bFlI9ZKFwvgDkzp2alnmzdik+nnnNnnjR2oQLjegE0Tkq98zZ31uhimTs79WRkq57Gye5/VMz1AmhIQwD3LJvPhIrhl4vqyjLuvml+3utpnOTu+YDgASv4zhsvIpjiMwFVoSB/tGAGh1q7aGvvpqLcz8VzT+Gn311EQ13/2Wh3x4kdPk68tZv4sShOxEZ8Bul9ri/VesYiGLD4+f9tSe8D5xnX3w7evPL2lDuBqRBvixBri4z4nr82iK82e2ZTe1eE8274t6zVlwtcfwloOdSRtbrs7vioyQeItUVwIrGsHa85i7HnCtcLoPlQe9bqih8dPfkJhPjR4eP/TGk+mL3Yc4XrBdCSRQFojz1mGSc6dplUyWbrlStcL4Ct20c3ZdzO1u2pm0+FwvUCeGXzLtq7xmq6U8MExx5NpFImFY51Rnh1i/unibleAJEemxff2IHddmDcdflqxhpNKL7q8Y847KMHWL3hI6Kx7F1OcoXrBQDwzNoPMIFyoh9uBifzBytMmQ9/bRAYaeSr+MNlmPJxtACOQ/TDzZhAOb96eXvm9eQRTwjgnR0trH6rBbF8RN/fAHbmZ5avtpxgYyVWyIdYgliCFfITbKjCVzMOD8C2ib6/AbECPL/lc977ePwtVj5wvRGUpHZCOb/5yVIC76/FVNYQPGs+4nPHU7ca7yH6u3U4Xe1EZjWx8NsrOdrRXeiwUsITLQBAW3s3P1zxBoHTz8Fu3U9k21q0Jzudw/GgPREib72M3XqAwOln8+B/rvNM8sFDAgB4Yf2H/PLtdqy6qTgdrUS2rkEjXQWLx4l00r31JZz2VnyTTuJ/tx7lxY07ChZPJrj+ZtBghPVv7Wb6madzarADjR4nfuBTTPVETFl+l5Cz2w4Qfec1NNKF+IP85shkHvj563jpmQDwUB9gICLwH7efy9myr3cDBL54Fv6TZ2dv5sdoqBLb8x49n7zXN5jYZn+B2x7b5snnAz0pAEjk+ell0zkt1H+9tcL1BGdfiARys5awRruJbt+I3do/2XPn8RBLV+zxZPLBwwIAqAjA00vraKzq78pIoIzg7AuxwvVZPZbdup/o+xvQnv6bRZ91KEtXHqI7ezcQ846nBQAwvdbiiT+tpTIwoD8r4J8+C/8psxFrfNauxmPEdm8ntnf7IP+oI2pz4y/b2HfMXSt+pIvnBQAw/+QAjy6sRoZc/yUYInD6V/HVn5J+parE9++hZ+fbaHTwsM5R5Y7njrJxr4dP/V48NgoYmU+P2nTFlAumDfHx7Rj2wX3YB/chxsJUVIOMMfK1bWItu+nZ/ibxzz8Ge/h6QA+v6+DFj3uy+AkKR1G0AEluPKecv503+py9HrVoD4axqyZTFq4jXFeLKrQdaSPSehir/QATYm0EGN1q/qf1HfzPu94xesaiqAQAsHxuiNvOq8xJ3T97s5NfbDuek7oLRdEJAGDxzDLuXVBFwMqOJxCNKw+93sGvf1946znbFKUAAL5c7+OhK6uZXDm+5/P2d9jcu/oYHxxMf21AL1C0AgCoLRe+dX4F18wsx6TpENqOsuqDbv51UxfHIkX7FRW3AJLMqLO4/YJKLpgWGFMItqNs3NvDzzZ2sKvV22P8VDghBJAkXC40nRbkvGkBGqos6qsMqnCg06Gl3ebNvTFe3hWhrfuE+UpOLAGUGI6n5gOUyD4lAZzglARwglMSwAlOSQAnOEZVCzerskRBUdVOA7QUOpASBaPZAM2FjqJEoZBmg2qpBThBUZxmg5RagBMVUWk2OJr6GqoligrBWS8N1eUVGHNYRHIzmb6EK1HVblGnzmBMF7Cm0AGVyC8Kv3XEHDfiKOLoqkIHVCLPqK5Ctc8JfFZV3ffDtiVygqp2AM8BGCwDljkiIo8UOK4SeUJVHwJaITEhJLm9UtXZKWKmFCyyEjlHVVtU9XSgC3pvBjlq46jdqegDBY2uRB7QH4jQlZwaKfWDF0f2g9lkRM4pRGglcouqbgGdB/TNcTf9fygGjRnsxaqON5a4KpEyqtoSjThLohGNRwdMcze9iR9Ydp8tulhVi+PpxxKoatSxncVA37q70YgSjejwCSHxxMVhk6remscYS+QQVZYDm/0jrKpnVQ1YGbM3+RhHAN5V1d3AQhFx/++flRiGqkZVWQY8JSKgimUNXmy1rwUYkvwkT9riLCj1CbyHqrY4tjMfeCq5TUwi3QNbAtPcFhkt+ThGATZFReeo6rZcB10iO6jqlmjEmQts1iFrKw8UQWt3d6IFONjaPVryk+OFz4DzHbVvU1X3/x7qCUrC5HG+CcwDPo/1rmAzkggOtCcWuei7tndGYlSWJdqGIcnvLagOsE2Qx1Q1AswVkUCOPkuJNFDVDlV9UERuADYBTnJlG8cBywJU+9ZQ2n+0fx7wsEdlJ4cTxtDA5AcGjhI1sYuIhB1HrxEjiwUuFxH3/7Z7EaGq3Qq/RXWViDynqglvf0BGB473k9f95JmfZMRnpcPhwbnsE4D2F08ujChGEAihzmVgLlLRRsE0gjYCU0Ukv2u4Fhm9d2mbQZoVp1lUmgVnvYpZq3B8pBUqkyKIDlnXoLV7+NpG/w8+dp2HsbfkVgAAAABJRU5ErkJggg==" alt="Cursing Gnomes icon">
+      <div class="app-meta">
+        <h2>Cursing Gnomes</h2>
+        <div class="dev">Ethos Games</div>
+        <div class="ver">v1.0.0 &middot; 230 MB &middot; iPhone &amp; iPad</div>
+      </div>
+    </div>
+    <p class="desc">The full native build — five factions, living NPCs, war votes, disasters, and all of Jeremy&rsquo;s music. This is the real game, not the web version.</p>
+    <div class="tags">
+      <span class="tag">Strategy</span><span class="tag">Offline</span><span class="tag">No ads</span><span class="tag">No microtransactions</span>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn-green" id="getBtn" href="#" onclick="installApp(event)">Get</a>
+      <a class="btn btn-ghost" href="https://github.com/aisaveslives6-ai/cursing-gnomes/releases/download/latest/CursingGnomes.ipa" download>Download IPA</a>
+    </div>
+    <p class="hint" id="getHint">Tap <b>Get</b> — the store hands the game straight to your installer, which signs it with your Apple&nbsp;ID and installs it. One tap.</p>
+  </div>
+
+  <!-- SOURCE -->
+  <div class="card">
+    <h2>Ethos Games source</h2>
+    <p class="sub">Add our source once and every Ethos Games app appears inside your installer with automatic update notices — like a real App Store feed.</p>
+    <div class="btn-row">
+      <a class="btn btn-green" href="#" onclick="addSource(event,'sidestore')">Add to SideStore</a>
+      <a class="btn btn-ghost" href="#" onclick="addSource(event,'altstore')">AltStore</a>
+    </div>
+    <p class="hint">Activates once the store is hosted at its permanent link.</p>
+  </div>
+
+  <!-- MY APPS / EXPIRY -->
+  <div class="card" id="myAppsCard">
+    <h2>My apps</h2>
+    <p class="sub" id="expiryLine">No installs tracked yet — tap <b>Get</b> above and the store will watch the 7-day signature for you.</p>
+    <div class="btn-row">
+      <a class="btn btn-ghost" href="#" id="refreshBtn" onclick="refreshApps(event)">Refresh in installer</a>
+      <a class="btn btn-ghost" href="#" onclick="resetTracking(event)">Reset</a>
+    </div>
+  </div>
+
+  <h3 class="section">Good to know</h3>
+  <div class="card faq">
+    <p><b>What does the store automate?</b><br>One-tap installs, the source feed with update notices, and the 7-day expiry countdown with a refresh button. The signing itself happens inside SideStore/AltStore with your Apple&nbsp;ID — Apple gives no other way on a stock iPhone.</p>
+    <p><b>Why does it expire every 7 days?</b><br>Apple&rsquo;s rule for free Apple&nbsp;IDs, not ours. Your installer re-signs apps on its own — saves are never touched.</p>
+    <p><b>Is this safe?</b><br>Every app is signed on <i>your</i> phone with <i>your</i> Apple&nbsp;ID. Nothing here can see your password, and the game is fully offline.</p>
+    <p><b>Want it to never expire?</b><br>Apple&rsquo;s $99/year Developer Program signs apps for a full year. Same store, same games.</p>
+  </div>
+
+  <footer>
+    <div class="motto">No microtransactions. No bullshit.</div>
+    Built by Ethos Games &middot; Cursing Gnomes &copy; 2026
+  </footer>
+</main>
+
+<script>
+var IPA_URL = "https://github.com/aisaveslives6-ai/cursing-gnomes/releases/download/latest/CursingGnomes.ipa";
+var SOURCE_URL = "https://aisaveslives6-ai.github.io/cursing-gnomes/store/apps.json"; // live once hosted
+var BUNDLE_ID = "com.ethosgames.cursinggnomes";
+
+function getInstaller() { return localStorage.getItem("eg_installer") || "sidestore"; }
+
+function setInstaller(which) {
+  if (which) localStorage.setItem("eg_installer", which);
+  else localStorage.removeItem("eg_installer");
+  renderInstaller();
+}
+
+function renderInstaller() {
+  var cur = localStorage.getItem("eg_installer");
+  document.getElementById("choiceSide").classList.toggle("active", cur === "sidestore");
+  document.getElementById("choiceAlt").classList.toggle("active", cur === "altstore");
+  document.getElementById("choiceNone").classList.toggle("active", !cur);
+  document.getElementById("setupGuide").classList.toggle("hidden", !!cur);
+  var hint = document.getElementById("getHint");
+  if (cur === "altstore") hint.innerHTML = "Tap <b>Get</b> — the store hands the game straight to <b>AltStore</b>, which signs it with your Apple&nbsp;ID and installs it. One tap.";
+  else hint.innerHTML = "Tap <b>Get</b> — the store hands the game straight to <b>SideStore</b>, which signs it with your Apple&nbsp;ID and installs it. One tap.";
+}
+
+function installApp(e) {
+  e.preventDefault();
+  var inst = getInstaller();
+  localStorage.setItem("eg_installed_at", Date.now().toString());
+  renderExpiry();
+  window.location.href = inst + "://install?url=" + encodeURIComponent(IPA_URL);
+}
+
+function addSource(e, inst) {
+  e.preventDefault();
+  window.location.href = inst + "://source?url=" + encodeURIComponent(SOURCE_URL);
+}
+
+function refreshApps(e) {
+  e.preventDefault();
+  window.location.href = getInstaller() + "://";
+}
+
+function resetTracking(e) {
+  e.preventDefault();
+  localStorage.removeItem("eg_installed_at");
+  renderExpiry();
+}
+
+function renderExpiry() {
+  var line = document.getElementById("expiryLine");
+  var at = parseInt(localStorage.getItem("eg_installed_at") || "0", 10);
+  if (!at) {
+    line.innerHTML = "No installs tracked yet — tap <b>Get</b> above and the store will watch the 7-day signature for you.";
+    return;
+  }
+  var daysLeft = 7 - Math.floor((Date.now() - at) / 86400000);
+  var dateStr = new Date(at).toLocaleDateString(undefined, { month:"short", day:"numeric" });
+  if (daysLeft > 2) {
+    line.innerHTML = "Cursing Gnomes installed " + dateStr + " — signature good for <span class='expiry-ok'>" + daysLeft + " more days</span>.";
+  } else if (daysLeft >= 0) {
+    line.innerHTML = "Cursing Gnomes installed " + dateStr + " — signature expires <span class='expiry-warn'>in " + daysLeft + " day" + (daysLeft === 1 ? "" : "s") + "</span>. Hit <b>Refresh in installer</b>.";
+  } else {
+    line.innerHTML = "Cursing Gnomes signature has <span class='expiry-bad'>expired</span> — the app won't open until you hit <b>Refresh in installer</b>. Your saves are safe.";
+  }
+}
+
+renderInstaller();
+renderExpiry();
+</script>
+</body>
+</html>
